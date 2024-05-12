@@ -1,0 +1,74 @@
+## 
+
+networks:
+  dns_vpn:
+    name: "dns_vpn"
+    ipam:
+      config:
+        - subnet: 10.8.1.0/25
+services:
+  pihole:
+    image: pihole/pihole
+    container_name: pihole
+    hostname: pihole
+    environment:
+      # ⚠️ Change the Web UI Password:
+      - WEBPASSWORD=dlmew2drezlx_5rub8#ubU6r@NajlSt6y9Xiza0i
+    volumes:
+      - '../volumes/pihole/resolv.conf:/etc/resolv.conf'
+      - '../volumes/pihole/etc-pihole:/etc/pihole'
+      - '../volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "5353:80/tcp"
+    restart: unless-stopped
+    networks:
+      dns_vpn:
+        ipv4_address: 10.8.1.2
+
+  unbound: 
+    image: mvance/unbound-rpi:latest # remember to change this if you're using rpi
+    container_name: unbound
+    hostname: unbound
+    volumes:
+      - '../volumes/unbound:/opt/unbound/etc/unbound'
+    ports:
+      - "5053:53/tcp"
+      - "5053:53/udp"
+    healthcheck:
+      test: ["NONE"]
+    restart: unless-stopped
+    networks:
+      dns_vpn: 
+        ipv4_address: 10.8.1.3
+
+  wireguard:
+    image: ghcr.io/wg-easy/wg-easy
+    container_name: wireguard
+    hostname: wireguard
+    environment:
+      # ⚠️ Change the server's hostname (clients will connect to):
+      - WG_HOST=genesis11.zapto.org  #no-ip
+
+      # ⚠️ Change the Web UI Password:
+      - PASSWORD=thlPEfAjOtH96PAPHaZESplvoHlcA$3bIphisuVu
+
+      # 💡 This is the Pi-Hole Container's IP Address
+      - WG_DEFAULT_DNS=10.8.1.2
+      - WG_DEFAULT_ADDRESS=10.8.0.x
+    volumes:
+      - '../volumes/wireguard:/etc/wireguard'
+    ports:
+      - "51820:51820/udp" #port forwarding
+      - "51821:51821/tcp" #web console
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+    networks:
+      dns_vpn:
+        ipv4_address: 10.8.1.4

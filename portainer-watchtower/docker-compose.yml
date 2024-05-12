@@ -1,0 +1,38 @@
+##
+  
+networks:
+  port_tower:
+    name: "port_tower"
+    ipam:
+      config:
+        - subnet: 10.8.2.0/28
+
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    hostname: watchtower
+    environment: 
+      WATCHTOWER_SCHEDULE: " 0 5 * * *"
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/etc/localtim:/etc/localtime:ro'
+    restart: unless-stopped
+    networks:
+      port_tower:
+        ipv4_address: 10.8.2.2
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    hostname: portainer
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '../volumes/portainer:/data'
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    restart: always
+    networks:
+      port_tower:
+        ipv4_address: 10.8.2.3
