@@ -52,7 +52,7 @@ services:
       - WG_HOST=genesis11.zapto.org  #no-ip
 
       # ⚠️ Change the Web UI Password:
-      - PASSWORD=thlPEfAjOtH96PAPHaZESplvoHlcA$3bIphisuVu
+      - PASSWORD_HASH=$$2a$$12$$ba9zJZwnN7eXjV.PweT63e5BRjncRz/ZLZeTytoZ.KvzOZvd5Pgeu
 
       # 💡 This is the Pi-Hole Container's IP Address
       - WG_DEFAULT_DNS=10.8.1.2
