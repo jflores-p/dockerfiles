@@ -1,0 +1,13 @@
+##
+
+services:
+    noip-doc:
+        image: noipcom/noip-duc:3.2.0
+        container_name: noip-duc
+        hostname: noip-duc
+        environment:
+          - NOIP_USERNAME=28xt4gr
+          - NOIP_PASSWORD=cpSNNCXJw8LP
+          - NOIP_HOSTNAMES=genesis11.zapto.org
+
+        restart: unless-stopped
