@@ -6,8 +6,8 @@ services:
         container_name: noip-duc
         hostname: noip-duc
         environment:
-          - NOIP_USERNAME=28xt4gr
-          - NOIP_PASSWORD=cpSNNCXJw8LP
-          - NOIP_HOSTNAMES=genesis11.zapto.org
+          - NOIP_USERNAME=96g2ksz
+          - NOIP_PASSWORD=4kkspa1Q8knd
+          - NOIP_HOSTNAMES=joako-selfhost.ddns.net
 
         restart: unless-stopped
