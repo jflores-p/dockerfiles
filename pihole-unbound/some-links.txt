@@ -4,8 +4,6 @@ https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
 https://phishing.army/download/phishing_army_blocklist.txt
 https://www.github.developerdan.com/hosts/lists/amp-hosts-extended.txt
 https://www.github.developerdan.com/hosts/lists/facebook-extended.txt
-https://big.oisd.nl/
-https://nsfw.oisd.nl/
 https://someonewhocares.org/hosts/zero/
 https://someonewhocares.org/hosts/ipv6zero/
 https://raw.githubusercontent.com/Pyenb/Pi-hole-blocklist/main/blocklist.txt
