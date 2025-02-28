@@ -8,20 +8,25 @@ networks:
         - subnet: 10.8.1.0/25
 services:
   pihole:
-    image: pihole/pihole
+    image: pihole/pihole:latest
     container_name: pihole
     hostname: pihole
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     environment:
-      # ⚠️ Change the Web UI Password:
-      - WEBPASSWORD=dlmew2drezlx_5rub8#ubU6r@NajlSt6y9Xiza0i
-    volumes:
-      - '../volumes/pihole/resolv.conf:/etc/resolv.conf'
-      - '../volumes/pihole/etc-pihole:/etc/pihole'
-      - '../volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      # / Change the Web UI Password:
+      FTLCONF_webserver_api_password: "dlmew2drezlx_5rub8#ubU6r@NajlSt6y9Xiza0i"
+      TZ: "America/Lima"
+      FTLCONF_dns_listeningMode: "all"
+#    volumes:
+#      - '../volumes/pihole/resolv.conf:/etc/resolv.conf'
+#      - '../volumes/pihole/etc-pihole:/etc/pihole'
+#      - '../volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     ports:
       - "53:53/tcp"
       - "53:53/udp"
       - "5353:80/tcp"
+      - "443:443/tcp"
     restart: unless-stopped
     networks:
       dns_vpn:
