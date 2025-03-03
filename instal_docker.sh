@@ -1,3 +1,29 @@
+### COMFY ZONE ###
+
+sudo apt install neovim git htop exa bat -y
+
+echo "# Changing ls to exa
+alias ls='exa -al --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
+# adding flags
+alias cp='cp -i'                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias vf='vifmrun'
+
+# 'htop' enves de 'top'
+alias top='htop'
+alias nv='nvim'
+alias cat='batcat'" > .bash_aliases
+
+touch ~/.hushlogin
+
+
+### DOCER ###
+
 # uninstall unofficial docker
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
