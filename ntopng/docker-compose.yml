@@ -1,0 +1,15 @@
+name: ntopng
+services:
+    ntopng:
+        image: ntop/ntopng_arm64.dev:latest
+        container_name: ntopng
+        hostname: ntopng
+        stdin_open: true
+        tty: true
+        environment:
+          TZ: "America/Lima"
+        labels:
+          - "com.centurylinklabs.watchtower.enable=false"
+        restart: unless-stopped
+        network_mode: host
+        command: -i eth0
