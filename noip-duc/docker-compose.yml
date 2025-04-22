@@ -1,13 +1,22 @@
-##
+networks:
+  noip_duc:
+    name: "noip_duc"
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.8.3.0/24
+          gateway: 10.8.3.1
 
 services:
-    noip-doc:
-        image: noipcom/noip-duc:3.2.0
-        container_name: noip-duc
-        hostname: noip-duc
-        environment:
-          - NOIP_USERNAME=96g2ksz
-          - NOIP_PASSWORD=4kkspa1Q8knd
-          - NOIP_HOSTNAMES=joako-selfhost.ddns.net
-
-        restart: unless-stopped
+  noip-duc:
+    image: noipcom/noip-duc:3.2.0
+    container_name: noip-duc
+    hostname: noip-duc
+    environment:
+      - NOIP_USERNAME=96g2ksz
+      - NOIP_PASSWORD=4kkspa1Q8knd
+      - NOIP_HOSTNAMES=joako-selfhost.ddns.net
+    restart: unless-stopped
+    networks:
+      noip_duc:
+        ipv4_address: 10.8.3.2

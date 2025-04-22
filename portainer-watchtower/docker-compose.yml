@@ -5,7 +5,8 @@ networks:
     name: "port_tower"
     ipam:
       config:
-        - subnet: 10.8.2.0/28
+        - subnet: 10.8.2.0/24
+          gateway: 10.8.2.1
 
 services:
   watchtower:
