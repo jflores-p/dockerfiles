@@ -1,138 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Container Dashboard</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #c0c4ff;
-      color: #f8f8f2;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Container Dashboard</title>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+      <style>
+			:root{
+				--white: #f5f5ff;
+				--dracula-bg: #c0c4ff;
+				--dracula-fg: #44475a;
+				--tile-bg: #d6d9ff;
+				--highlight: #bd93f9;
+			}
+         body {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         background-color: var(--dracula-bg);
+         color: var(--white);
+         margin: 0;
+         padding: 0;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         }
+         h1, h2.section-title {
+         margin: 30px 0 10px;
+         color: var(--dracula-fg);
+         }
+         a {
+         color: inherit;
+         text-decoration: none;
+         }
+         /* -------------------- */
+         .tile-wrapper {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 90px;
+         margin: 10px;
+         }
+         .icon-tile {
+         width: 72px;
+         height: 72px;
+         background-color: var(--tile-bg);
+         border-radius: 14px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+         transition: transform 0.2s, box-shadow 0.2s;
+         text-decoration: none;
+         }
+         .icon-tile:hover {
+         transform: scale(1.08);
+         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+         }
+         .icon-tile img {
+         width: 40px;
+         height: 40px;
+         }
+         .tile-label {
+         margin-top: 8px;
+         color: var(--white);
+         font-size: 14px;
+         text-align: center;
+         font-family: inherit;
+         font-weight: bold;
+         color: inherit;
+         }
+         .tile-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 16px;
+         padding: 20px;
+         }
+         /* -------------------- */
+			
+			.section-header {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			width: 100%;
+			max-width: 1200px;
+			padding: 0 20px;
+			margin-top: 30px;
+			}
+			
+			.section-icon {
+			width: 32px;
+			height: 32px;
+			margin-right: 12px;
+			vertical-align: middle;
+			}
+         /* -------------------- */
+			
+			#clock {
+			position: fixed;
+			top: 1.5vw;         /* responsive top padding */
+			right: 2vw;         /* responsive right padding */
+			font-family: 'Poppins', sans-serif;
+			font-size: clamp(36px, 6vw, 78px);  /* scales smoothly */
+			color: var(--white);
+			z-index: 1000;
+			}
 
-    h1, h2.section-title {
-      margin: 30px 0 10px;
-      color: #bd93f9;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      max-width: 1200px;
-      padding: 20px;
-    }
-
-    .card {
-      background-color: #8689b2;
-      width: 100px;
-      text-align: center;
-      padding: 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-    }
-
-    .card img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
-    }
-
-    .card h2 {
-      font-size: 14px;
-      margin: 0;
-      color: #f8f8f2;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-  </style>
-</head>
-<body>
-
-  <h1><img src="icons/section-containers.svg" alt="Containers" width="32" height="32" style="vertical-align: middle; margin-right: 8px;">My Container Dashboard</h1>
-  <div class="container">
-    <a href="https://pi.local/admin" class="card">
-      <img src="icons/pihole.svg" alt="YouTube logo">
-      <h2>Pi-hole</h2>
-    </a>
-    <a href="https://pi.local:9443" class="card">
-      <img src="icons/portainer.svg" alt="Portainer logo">
-      <h2>Portainer</h2>
-    </a>
-    <a href="http://pi.local:51821" class="card">
-      <img src="icons/wireguard.svg" alt="WireGuard logo">
-      <h2>WireGuard</h2>
-    </a>
-    <a href="http://pi.local:3000" class="card">
-      <img src="icons/ntopng.webp" alt="ntopng logo">
-      <h2>ntopng</h2>
-    </a>
-    <a href="http://pi.local:8685" class="card">
-      <img src="icons/intenet.svg" alt="vnStat logo">
-      <h2>vnStat</h2>
-    </a>
-    <a href="http://pi.local:8080" class="card">
-      <img src="icons/docker-composerize.svg" alt="Composerize logo">
-      <h2>Composerize</h2>
-    </a>
-  </div>
-
-  <h2 class="section-title">
-  <img src="icons/section-favorites.svg" alt="Favorites" width="32" height="32" style="vertical-align: middle; margin-right: 8px;">
-  Frequently Used Pages
-  </h2>
-  <div class="container">
-    <a href="https://youtube.com" class="card">
-      <img src="icons/youtube.svg" alt="YouTube logo">
-      <h2>YouTube</h2>
-    </a>
-    <a href="https://mail.google.com" class="card">
-      <img src="icons/gmail.svg" alt="Gmail logo">
-      <h2>Gmail</h2>
-    </a>
-    <a href="https://outlook.live.com" class="card">
-      <img src="icons/outlook.svg" alt="Outlook logo">
-      <h2>Outlook</h2>
-    </a>
-    <a href="https://chat.openai.com" class="card">
-      <img src="icons/chatgpt.svg" alt="ChatGPT logo">
-      <h2>ChatGPT</h2>
-    </a>
-    <a href="https://drive.google.com" class="card">
-      <img src="icons/drive.svg" alt="Google Drive logo">
-      <h2>Google Drive</h2>
-    </a>
-    <a href="https://netflix.com" class="card">
-      <img src="icons/netflix.svg" alt="Netflix logo">
-      <h2>Netflix</h2>
-    </a>
-    <a href="https://play.max.com" class="card">
-      <img src="icons/hbomax.svg" alt="HBO Max logo">
-      <h2>HBO Max</h2>
-    </a>
-    <a href="https://www.disneyplus.com" class="card">
-      <img src="icons/disneyplus.svg" alt="Disney+ logo">
-      <h2>Disney+</h2>
-    </a>
-  </div>
-
-</body>
+			.custom-icon{
+			color: var(--dracula-fg);
+			}
+			
+      </style>
+   </head>
+	
+   <body>
+		<div id="clock"></div>
+      <h1 class="section-title">
+			<svg xmlns="http://www.w3.org/2000/svg" class="custom-icon" viewBox="0 0 24 24" width="24" height="24">
+				<path d="M3 7v13h18V7H3zm2 2h14v9H5V9zm5-6h4v2h-4V3zM8 4V2h8v2h5v2H3V4h5z"/>
+			</svg>
+			My Container Dashboard
+		</h1>
+		
+      <div class="tile-container">
+         <div class="tile-wrapper" title="Pi-hole">
+            <a href="https://pi.local/admin" class="icon-tile"><img src="icons/pihole.svg" alt="Pi-hole logo"></a>
+            <p class="tile-label">Pi-hole</p>
+         </div>
+         <div class="tile-wrapper" title="Portainer">
+            <a href="https://pi.local:9443" class="icon-tile"><img src="icons/portainer.svg" alt="Portainer logo"></a>
+            <p class="tile-label">Portainer</p>
+         </div>
+         <div class="tile-wrapper" title="WireGuard">
+            <a href="http://pi.local:51821" class="icon-tile"><img src="icons/wireguard.svg" alt="WireGuard logo"></a>
+            <p class="tile-label">WireGuard</p>
+         </div>
+         <div class="tile-wrapper" title="ntopng">
+            <a href="http://pi.local:3000" class="icon-tile"><img src="icons/ntopng.webp" alt="ntopng logo"></a>
+            <p class="tile-label">ntopng</p>
+         </div>
+         <div class="tile-wrapper" title="vnStat">
+            <a href="http://pi.local:8685" class="icon-tile"><img src="icons/intenet.svg" alt="vnStat logo"></a>
+            <p class="tile-label">vnStat</p>
+         </div>
+         <div class="tile-wrapper" title="Composerize">
+            <a href="http://pi.local:8080" class="icon-tile"><img src="icons/docker-composerize.svg" alt="Composerize logo"></a>
+            <p class="tile-label">Composerize</p>
+         </div>
+      </div>
+		
+      <h1 class="section-title">
+         <svg xmlns="http://www.w3.org/2000/svg" class="custom-icon" viewBox="0 0 24 24" width="24" height="24">
+				<path d="M12 17.27L18.18 21l-1.64-7.03
+						  L22 9.24l-7.19-.61L12 2 9.19 8.63
+						  2 9.24l5.46 4.73L5.82 21z"/>
+			</svg>
+         Frequently Used Pages
+      </h1>
+		
+      <div class="tile-container">
+         <div class="tile-wrapper" title="YouTube">
+            <a href="https://youtube.com" class="icon-tile"><img src="icons/youtube.svg" alt="YouTube logo"></a>
+            <p class="tile-label">YouTube</p>
+         </div>
+         <div class="tile-wrapper" title="Gmail">
+            <a href="https://gmail.com" class="icon-tile"><img src="icons/gmail.svg" alt="Gmail logo"></a>
+            <p class="tile-label">Gmail</p>
+         </div>
+         <div class="tile-wrapper" title="Outlook">
+            <a href="https://outlook.live.com" class="icon-tile"><img src="icons/outlook.svg" alt="Outlook logo"></a>
+            <p class="tile-label">Outlook</p>
+         </div>
+         <div class="tile-wrapper" title="ChatGPT">
+            <a href="https://chat.openai.com" class="icon-tile"><img src="icons/chatgpt.svg" alt="ChatGPT logo"></a>
+            <p class="tile-label">ChatGPT</p>
+         </div>
+         <div class="tile-wrapper" title="Google Drive">
+            <a href="https://drive.google.com" class="icon-tile"><img src="icons/drive.svg" alt="Google Drive logo"></a>
+            <p class="tile-label">Google Drive</p>
+         </div>
+         <div class="tile-wrapper" title="Netflix">
+            <a href="https://netflix.com" class="icon-tile"><img src="icons/netflix.svg" alt="Netflix logo"></a>
+            <p class="tile-label">Netflix</p>
+         </div>
+         <div class="tile-wrapper" title="HBO Max">
+            <a href="https://play.max.com" class="icon-tile"><img src="icons/hbomax.svg" alt="HBO Max logo"></a>
+            <p class="tile-label">HBO Max</p>
+         </div>
+         <div class="tile-wrapper" title="Disney+">
+            <a href="https://www.disneyplus.com" class="icon-tile"><img src="icons/disneyplus.svg" alt="Disney+ logo"></a>
+            <p class="tile-label">Disney+</p>
+         </div>
+      </div>
+      <!----------------->
+   </body>
+	<script>
+		function updateClock() {
+			const now = new Date();
+			const hours = now.getHours().toString().padStart(2, '0');
+			const minutes = now.getMinutes().toString().padStart(2, '0');
+			document.getElementById('clock').textContent = `${hours}:${minutes}`;
+		}
+		updateClock();
+		setInterval(updateClock, 60 * 1000);
+	</script>
 </html>
