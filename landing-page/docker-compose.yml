@@ -1,0 +1,12 @@
+services:
+  homepage:
+    image: nginx:alpine
+    container_name: landing-page
+    hostname: landing-page
+	environment:
+      TZ: "America/Lima"
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/usr/share/nginx/html:ro
+    restart: unless-stopped

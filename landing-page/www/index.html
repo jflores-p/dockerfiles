@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Container Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #c0c4ff;
+      color: #f8f8f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2.section-title {
+      margin: 30px 0 10px;
+      color: #bd93f9;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #8689b2;
+      width: 100px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+    }
+
+    .card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 14px;
+      margin: 0;
+      color: #f8f8f2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1><img src="icons/section-containers.svg" alt="Containers" width="32" height="32" style="vertical-align: middle; margin-right: 8px;">My Container Dashboard</h1>
+  <div class="container">
+    <a href="https://pi.local/admin" class="card">
+      <img src="icons/pihole.svg" alt="YouTube logo">
+      <h2>Pi-hole</h2>
+    </a>
+    <a href="https://pi.local:9443" class="card">
+      <img src="icons/portainer.svg" alt="Portainer logo">
+      <h2>Portainer</h2>
+    </a>
+    <a href="http://pi.local:51821" class="card">
+      <img src="icons/wireguard.svg" alt="WireGuard logo">
+      <h2>WireGuard</h2>
+    </a>
+    <a href="http://pi.local:3000" class="card">
+      <img src="icons/ntopng.webp" alt="ntopng logo">
+      <h2>ntopng</h2>
+    </a>
+    <a href="http://pi.local:8685" class="card">
+      <img src="icons/intenet.svg" alt="vnStat logo">
+      <h2>vnStat</h2>
+    </a>
+    <a href="http://pi.local:8080" class="card">
+      <img src="icons/docker-composerize.svg" alt="Composerize logo">
+      <h2>Composerize</h2>
+    </a>
+  </div>
+
+  <h2 class="section-title">
+  <img src="icons/section-favorites.svg" alt="Favorites" width="32" height="32" style="vertical-align: middle; margin-right: 8px;">
+  Frequently Used Pages
+  </h2>
+  <div class="container">
+    <a href="https://youtube.com" class="card">
+      <img src="icons/youtube.svg" alt="YouTube logo">
+      <h2>YouTube</h2>
+    </a>
+    <a href="https://mail.google.com" class="card">
+      <img src="icons/gmail.svg" alt="Gmail logo">
+      <h2>Gmail</h2>
+    </a>
+    <a href="https://outlook.live.com" class="card">
+      <img src="icons/outlook.svg" alt="Outlook logo">
+      <h2>Outlook</h2>
+    </a>
+    <a href="https://chat.openai.com" class="card">
+      <img src="icons/chatgpt.svg" alt="ChatGPT logo">
+      <h2>ChatGPT</h2>
+    </a>
+    <a href="https://drive.google.com" class="card">
+      <img src="icons/drive.svg" alt="Google Drive logo">
+      <h2>Google Drive</h2>
+    </a>
+    <a href="https://netflix.com" class="card">
+      <img src="icons/netflix.svg" alt="Netflix logo">
+      <h2>Netflix</h2>
+    </a>
+    <a href="https://play.max.com" class="card">
+      <img src="icons/hbomax.svg" alt="HBO Max logo">
+      <h2>HBO Max</h2>
+    </a>
+    <a href="https://www.disneyplus.com" class="card">
+      <img src="icons/disneyplus.svg" alt="Disney+ logo">
+      <h2>Disney+</h2>
+    </a>
+  </div>
+
+</body>
+</html>
