@@ -113,7 +113,10 @@
    </head>
 	
    <body>
-		<div id="clock"></div>
+	<div id="clock"></div>
+
+      <!---------------------------------------------------------------------------------------------------------------->
+      
       <h1 class="section-title">
 			<svg xmlns="http://www.w3.org/2000/svg" class="custom-icon" viewBox="0 0 24 24" width="24" height="24">
 				<path d="M3 7v13h18V7H3zm2 2h14v9H5V9zm5-6h4v2h-4V3zM8 4V2h8v2h5v2H3V4h5z"/>
@@ -123,15 +126,23 @@
 		
       <div class="tile-container">
          <div class="tile-wrapper" title="Pi-hole">
-            <a href="https://pi.local/admin" class="icon-tile"><img src="icons/pihole.svg" alt="Pi-hole logo"></a>
+            <a href="https://pi.local:5052/admin" class="icon-tile"><img src="icons/pihole.svg" alt="Pi-hole logo"></a>
             <p class="tile-label">Pi-hole</p>
          </div>
          <div class="tile-wrapper" title="Portainer">
             <a href="https://pi.local:9443" class="icon-tile"><img src="icons/portainer.svg" alt="Portainer logo"></a>
             <p class="tile-label">Portainer</p>
          </div>
+         <div class="tile-wrapper" title="Snippets">
+            <a href="http://pi.local:8052" class="icon-tile"><img src="icons/snippets.svg" alt="Snippets logo"></a>
+            <p class="tile-label">Snippets</p>
+         </div>
+         <div class="tile-wrapper" title="Nginx Proxy Manager">
+            <a href="http://pi.local:9000" class="icon-tile"><img src="icons/proxy-manager.svg" alt="Nginx Proxy Manager logo"></a>
+            <p class="tile-label">Nginx Proxy Manager</p>
+         </div>
          <div class="tile-wrapper" title="WireGuard">
-            <a href="http://pi.local:51821" class="icon-tile"><img src="icons/wireguard.svg" alt="WireGuard logo"></a>
+            <a href="http://pi.local:5055" class="icon-tile"><img src="icons/wireguard.svg" alt="WireGuard logo"></a>
             <p class="tile-label">WireGuard</p>
          </div>
          <div class="tile-wrapper" title="ntopng">
@@ -142,16 +153,18 @@
             <a href="http://pi.local:8685" class="icon-tile"><img src="icons/vnstat.svg" alt="vnStat logo"></a>
             <p class="tile-label">vnStat</p>
          </div>
-         <div class="tile-wrapper" title="Composerize">
-            <a href="http://pi.local:8050" class="icon-tile"><img src="icons/docker-composerize.svg" alt="Composerize logo"></a>
-            <p class="tile-label">Composerize</p>
-         </div>
          <div class="tile-wrapper" title="Grafana">
             <a href="http://pi.local:4000" class="icon-tile"><img src="icons/grafana.svg" alt="Grafana logo"></a>
             <p class="tile-label">Grafana</p>
          </div>
+         <div class="tile-wrapper" title="Composerize">
+            <a href="http://pi.local:8050" class="icon-tile"><img src="icons/docker-composerize.svg" alt="Composerize logo"></a>
+            <p class="tile-label">Composerize</p>
+         </div>
       </div>
-		
+
+      <!---------------------------------------------------------------------------------------------------------------->
+
       <h1 class="section-title">
          <svg xmlns="http://www.w3.org/2000/svg" class="custom-icon" viewBox="0 0 24 24" width="24" height="24">
 				<path d="M12 17.27L18.18 21l-1.64-7.03
@@ -166,14 +179,6 @@
             <a href="https://youtube.com" class="icon-tile"><img src="icons/youtube.svg" alt="YouTube logo"></a>
             <p class="tile-label">YouTube</p>
          </div>
-         <div class="tile-wrapper" title="Gmail">
-            <a href="https://gmail.com" class="icon-tile"><img src="icons/gmail.svg" alt="Gmail logo"></a>
-            <p class="tile-label">Gmail</p>
-         </div>
-         <div class="tile-wrapper" title="Outlook">
-            <a href="https://outlook.live.com" class="icon-tile"><img src="icons/outlook.svg" alt="Outlook logo"></a>
-            <p class="tile-label">Outlook</p>
-         </div>
          <div class="tile-wrapper" title="ChatGPT">
             <a href="https://chat.openai.com" class="icon-tile"><img src="icons/chatgpt.svg" alt="ChatGPT logo"></a>
             <p class="tile-label">ChatGPT</p>
@@ -181,6 +186,14 @@
          <div class="tile-wrapper" title="Google Drive">
             <a href="https://drive.google.com" class="icon-tile"><img src="icons/drive.svg" alt="Google Drive logo"></a>
             <p class="tile-label">Google Drive</p>
+         </div>
+         <div class="tile-wrapper" title="Gmail">
+            <a href="https://gmail.com" class="icon-tile"><img src="icons/gmail.svg" alt="Gmail logo"></a>
+            <p class="tile-label">Gmail</p>
+         </div>
+         <div class="tile-wrapper" title="Outlook">
+            <a href="https://outlook.live.com" class="icon-tile"><img src="icons/outlook.svg" alt="Outlook logo"></a>
+            <p class="tile-label">Outlook</p>
          </div>
          <div class="tile-wrapper" title="Netflix">
             <a href="https://netflix.com" class="icon-tile"><img src="icons/netflix.svg" alt="Netflix logo"></a>
@@ -195,7 +208,7 @@
             <p class="tile-label">Disney+</p>
          </div>
       </div>
-      <!----------------->
+      <!---------------------------------------------------------------------------------------------------------------->
    </body>
 	<script>
 		function updateClock() {

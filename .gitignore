@@ -3,5 +3,11 @@ gravity*
 # Ignore IntelliJ IDEA project files
 .idea/
 
-# Ignore data
-data/
+# Ignore specific data folders
+tools/grafana-prometheus/grafana/data/
+tools/grafana-prometheus/prometheus/data/
+
+pihole-unbound/pihole/
+portainer-watchtower/portainer/
+# Explicitly do NOT ignore ./proxy/data
+!/proxy-manager/data/

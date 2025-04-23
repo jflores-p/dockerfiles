@@ -30,7 +30,7 @@ services:
         max-file: "3"
     networks:
       tools:
-        ipv4_address: 10.8.4.4
+        ipv4_address: 10.8.4.100
 
   cadvisor:
     container_name: monitoring-cadvisor
@@ -71,7 +71,7 @@ services:
     mem_reservation: 128m
     networks:
       tools:
-        ipv4_address: 10.8.4.5
+        ipv4_address: 10.8.4.101
 
   node-exporter:
     container_name: monitoring-node-exporter
@@ -108,7 +108,7 @@ services:
     mem_reservation: 64m
     networks:
       tools:
-        ipv4_address: 10.8.4.6
+        ipv4_address: 10.8.4.102
 
   prometheus:
     container_name: monitoring-prometheus
@@ -149,7 +149,7 @@ services:
     mem_reservation: 512m
     networks:
       tools:
-        ipv4_address: 10.8.4.7
+        ipv4_address: 10.8.4.103
 
 volumes:
   grafana-data:

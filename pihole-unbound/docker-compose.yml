@@ -1,11 +1,11 @@
-## 
-
 networks:
   dns_vpn:
     name: "dns_vpn"
     ipam:
       config:
-        - subnet: 10.8.1.0/25
+        - subnet: 10.8.1.0/24
+          gateway: 10.8.1.1
+
 services:
   pihole:
     image: pihole/pihole:latest
@@ -18,15 +18,14 @@ services:
       FTLCONF_webserver_api_password: "dlmew2drezlx_5rub8#ubU6r@NajlSt6y9Xiza0i"
       TZ: "America/Lima"
       FTLCONF_dns_listeningMode: "all"
-#    volumes:
-#      - '../volumes/pihole/resolv.conf:/etc/resolv.conf'
-#      - '../volumes/pihole/etc-pihole:/etc/pihole'
-#      - '../volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      FTLCONF_dns_upstreams: "10.8.1.3#5053"
+    volumes:
+      - './pihole:/etc/pihole'
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "5353:80/tcp"
-      - "443:443/tcp"
+      - "5051:80/tcp"
+      - "5052:443/tcp"
     restart: unless-stopped
     networks:
       dns_vpn:
@@ -37,7 +36,7 @@ services:
     container_name: unbound
     hostname: unbound
     volumes:
-      - '../volumes/unbound:/opt/unbound/etc/unbound'
+      - './unbound:/opt/unbound/etc/unbound'
     ports:
       - "5053:53/tcp"
       - "5053:53/udp"
@@ -63,10 +62,10 @@ services:
       - WG_DEFAULT_DNS=10.8.1.2
       - WG_DEFAULT_ADDRESS=10.8.0.x
     volumes:
-      - '../volumes/wireguard:/etc/wireguard'
+      - './wireguard:/etc/wireguard'
     ports:
-      - "51820:51820/udp" #port forwarding
-      - "51821:51821/tcp" #web console
+      - "5054:51820/udp" #port forwarding
+      - "5055:51821/tcp" #web console
     cap_add:
       - NET_ADMIN
       - SYS_MODULE

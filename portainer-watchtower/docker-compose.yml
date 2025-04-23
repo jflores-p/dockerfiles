@@ -29,7 +29,7 @@ services:
     hostname: portainer
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
-      - '../volumes/portainer:/data'
+      - './portainer:/data'
     ports:
       - "8000:8000"
       - "9443:9443"

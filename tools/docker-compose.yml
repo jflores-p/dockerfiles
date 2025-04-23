@@ -1,0 +1,49 @@
+networks:
+  tools:
+    name: "tools"
+    ipam:
+      config:
+        - subnet: 10.8.4.0/24
+          gateway: 10.8.4.1
+
+services:
+  homepage:
+    image: nginx:alpine
+    container_name: tools-homepage
+    hostname: homepage
+    environment:
+      TZ: "America/Lima"
+    ports:
+      - "8050:80"
+    volumes:
+      - "./www:/usr/share/nginx/html:ro"
+    restart: unless-stopped
+    networks:
+      tools:
+        ipv4_address: 10.8.4.2
+
+  composerize:
+    image: oaklight/composerize:latest
+    container_name: tools-composerize
+    hostname: composerize
+    ports:
+      - "8051:80"
+    restart: unless-stopped
+    networks:
+      tools:
+        ipv4_address: 10.8.4.3
+          
+  snippet-box:
+    image: pawelmalak/snippet-box:arm
+    container_name: tools-snippet-box
+    hostname: snippet-box
+    environment:
+      TZ: "America/Lima"
+    ports:
+      - "8052:5000"
+    volumes:
+      - "./snippet-box:/app/data"
+    restart: unless-stopped
+    networks:
+      tools:
+        ipv4_address: 10.8.4.4
