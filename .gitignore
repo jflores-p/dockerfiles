@@ -9,5 +9,7 @@ tools/grafana-prometheus/prometheus/data/
 
 pihole-unbound/pihole/
 portainer-watchtower/portainer/
+
+.homeassistant/
 # Explicitly do NOT ignore ./proxy/data
 !/proxy-manager/data/
