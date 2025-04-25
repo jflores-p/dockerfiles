@@ -18,4 +18,3 @@ This document lists the containers configured in the Docker Compose setup for mo
 | **cadvisor**       | 8090                |
 | **node-exporter**  | 9100                |
 | **prometheus**     | 9090                |
-|------------------------------------------|

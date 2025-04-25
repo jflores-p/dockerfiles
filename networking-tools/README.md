@@ -10,4 +10,3 @@ This document lists the containers configured in the Docker Compose setup for ne
 | Service Name         | Ports Exposed           |
 |----------------------|--------------------------|
 | **proxy-manager**    | 9000, 9001, 9002         |
-|-------------------------------------------------|

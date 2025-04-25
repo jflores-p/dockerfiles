@@ -12,4 +12,4 @@ This document lists the containers configured in the Docker Compose setup for mi
 | **homepage**       | 8050             |
 | **composerize**    | 8051             |
 | **snippet-box**    | 8052             |
-|--------------------|------------------|
+
