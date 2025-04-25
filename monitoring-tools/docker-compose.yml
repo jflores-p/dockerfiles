@@ -1,17 +1,48 @@
+networks:
+  main_network:
+    external: true
+
 services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: monitoring-watchtower
+    hostname: watchtower
+    environment:
+      WATCHTOWER_SCHEDULE: " 0 5 * * *"
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/etc/localtim:/etc/localtime:ro'
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: monitoring-portainer
+    hostname: portainer
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - './portainer:/data'
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    restart: always
+    networks:
+      main_network:
+
   grafana:
-    container_name: monitoring-grafana
     image: grafana/grafana:latest
-    hostname: rpi-grafana
+    container_name: monitoring-grafana
+    hostname: grafana
     restart: unless-stopped
     user: "472"
     ports:
       - "4000:3000"
     env_file:
-      - ./grafana/.env
+      - ./grafana-prometheus/grafana/.env
     volumes:
       - grafana-data:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana-prometheus/grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
     healthcheck:
@@ -29,13 +60,12 @@ services:
         max-size: "10m"
         max-file: "3"
     networks:
-      tools:
-        ipv4_address: 10.8.4.100
+      main_network:
 
   cadvisor:
-    container_name: monitoring-cadvisor
     image: gcr.io/cadvisor/cadvisor:latest
-    hostname: rpi-cadvisor
+    container_name: monitoring-cadvisor
+    hostname: cadvisor
     restart: unless-stopped
     cap_add:
       - SYS_ADMIN
@@ -70,13 +100,12 @@ services:
     mem_limit: 256m
     mem_reservation: 128m
     networks:
-      tools:
-        ipv4_address: 10.8.4.101
+      main_network:
 
   node-exporter:
-    container_name: monitoring-node-exporter
     image: prom/node-exporter:latest
-    hostname: rpi-exporter
+    container_name: monitoring-node-exporter
+    hostname: exporter
     restart: unless-stopped
     expose:
       - 9100
@@ -107,13 +136,12 @@ services:
     mem_limit: 128m
     mem_reservation: 64m
     networks:
-      tools:
-        ipv4_address: 10.8.4.102
+      main_network:
 
   prometheus:
-    container_name: monitoring-prometheus
     image: prom/prometheus:latest
-    hostname: rpi-prometheus
+    container_name: monitoring-prometheus
+    hostname: prometheus
     restart: unless-stopped
     user: "nobody"
     command:
@@ -127,7 +155,7 @@ services:
       - 9090
     volumes:
       - prometheus-data:/prometheus
-      - ./prometheus:/etc/prometheus/
+      - ./grafana-prometheus/prometheus:/etc/prometheus/
     depends_on:
       - cadvisor
       - node-exporter
@@ -148,10 +176,61 @@ services:
     mem_limit: 1g
     mem_reservation: 512m
     networks:
-      tools:
-        ipv4_address: 10.8.4.103
+      main_network:
+
+  homeassistant:
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    container_name: monitoring-homeassistant
+    hostname: homeassistant
+    volumes:
+      - './homeassistant:/config'
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/run/dbus:/run/dbus:ro'
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+
+  ntopng:
+    image: ntop/ntopng_arm64.dev:latest
+    container_name: monitoring-ntopng
+    hostname: ntopng
+    stdin_open: true
+    tty: true
+    environment:
+      TZ: "America/Lima"
+    restart: unless-stopped
+    command: -i eth0
+    network_mode: host
+
+  vnstat:
+    image: vergoh/vnstat:latest
+    container_name: monitoring-vnstat
+    hostname: vnstat
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "vnstatdb:/var/lib/vnstat"
+    environment:
+      - "HTTP_PORT=8685"
+      - "HTTP_BIND=*"
+      - "HTTP_LOG=/dev/stdout"
+      - "LARGE_FONTS=0"
+      - "CACHE_TIME=1"
+      - "DARK_MODE=0"
+      - "PAGE_REFRESH=0"
+      - "INDEX_IMAGES_PER_ROW=1"
+      - "INDEX_IMAGE_OUTPUT=hs"
+      - "VNSTAT_RateUnit=1"
+      - "VNSTAT_InterfaceOrder=0"
+      - "VNSTAT_QueryMode=0"
+    restart: unless-stopped
+    network_mode: host
 
 volumes:
+  vnstatdb:
+    labels:
+      - "com.example.description=Vnstat Persistent Data"
+      - "com.example.service=monitoring"
   grafana-data:
     labels:
       - "com.example.description=Grafana Persistent Data"
@@ -161,6 +240,3 @@ volumes:
       - "com.example.description=Prometheus Persistent Data"
       - "com.example.service=monitoring"
 
-networks:
-  tools:
-    external: true

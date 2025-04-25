@@ -1,8 +1,8 @@
 services:
   proxy-manager:
     image: 'jc21/nginx-proxy-manager:latest'
-    container_name: nginx-proxy-manager
-    hostname: proxy-manager
+    container_name: networking-NPM
+    hostname: nginx-proxy-manager
     ports:
       # These ports are in format <host-port>:<container-port>
       - '9000:81' # Admin Web Port
@@ -18,16 +18,13 @@ services:
       interval: 10s
       timeout: 3s
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - ./proxy-manager/data:/data
+      - ./proxy-manager/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
+    networks:
+      main_network:
 
 
 networks:
-  proxy-manager:
-    name: "proxy-manager"
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.8.5.0/30
-          gateway: 10.8.5.1
+  main_network:
+    external: true

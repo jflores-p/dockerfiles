@@ -4,12 +4,12 @@ gravity*
 .idea/
 
 # Ignore specific data folders
-tools/grafana-prometheus/grafana/data/
-tools/grafana-prometheus/prometheus/data/
+grafana-prometheus/grafana/data/
+grafana-prometheus/prometheus/data/
 
 pihole-unbound/pihole/
-portainer-watchtower/portainer/
+portainer/
 
-.homeassistant/
+homeassistant/
 # Explicitly do NOT ignore ./proxy/data
 !/proxy-manager/data/
