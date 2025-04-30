@@ -1,8 +1,9 @@
 gravity*
 
 # Ignore env files not encrypted
-*.env
 !.env.enc
+!grafana/.env
+*.env
 
 # Ignore specific data folders
 grafana-prometheus/grafana/data/
