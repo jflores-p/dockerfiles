@@ -11,5 +11,10 @@ pihole-unbound/pihole/
 portainer/
 
 homeassistant/
+
+## NPM
+
+proxy-manager/letsencrypt/
+
 # Explicitly do NOT ignore ./proxy/data
 !/proxy-manager/data/

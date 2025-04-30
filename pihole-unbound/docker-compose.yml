@@ -53,14 +53,13 @@ services:
     hostname: wireguard
     environment:
       # ⚠️ Change the server's hostname (clients will connect to):
-      - WG_HOST=joako-selfhost.ddns.net  #no-ip
-
+      WG_HOST: ${WG_HOST}  #no-ip
       # ⚠️ Change the Web UI Password:
-      - PASSWORD_HASH=$$2a$$12$$ba9zJZwnN7eXjV.PweT63e5BRjncRz/ZLZeTytoZ.KvzOZvd5Pgeu
+      PASSWORD_HASH: ${PASSWORD_HASH}
 
       # 💡 This is the Pi-Hole Container's IP Address
-      - WG_DEFAULT_DNS=10.8.1.2
-      - WG_DEFAULT_ADDRESS=10.8.0.x
+      WG_DEFAULT_DNS: ${WG_DEFAULT_DNS}
+      WG_DEFAULT_ADDRESS: ${WG_DEFAULT_ADDRESS}
     volumes:
       - './wireguard:/etc/wireguard'
     ports:

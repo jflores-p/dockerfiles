@@ -1,0 +1,24 @@
+{
+  "cloudflare": [
+    {
+      "authentication": {
+        "api_token": "u7p_JTllAl53syqFac5QlX_l7AQMXxsbigPfpDWt",
+        "api_key": {
+          "api_key": "962f45725f0e947cbd1b0fb6c19c916f26745",
+          "account_email": "joaquinifloresp@gmail.com"
+        }
+      },
+      "zone_id": "3a5e9bd0ad66164eb70db3dccee4bd16",
+      "subdomains": [
+        {
+          "name": "pi",
+          "proxied": true
+        }
+      ]
+    }
+  ],
+  "a": true,
+  "aaaa": true,
+  "purgeUnknownRecords": false,
+  "ttl": 300
+}
