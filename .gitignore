@@ -1,7 +1,8 @@
 gravity*
 
-# Ignore IntelliJ IDEA project files
-.idea/
+# Ignore env files not encrypted
+*.env
+!.env.enc
 
 # Ignore specific data folders
 grafana-prometheus/grafana/data/
