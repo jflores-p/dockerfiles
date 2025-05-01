@@ -5,6 +5,8 @@ gravity*
 !grafana/.env
 *.env
 
+cloudflare/cloudflare-ddns-config.json
+
 # Ignore specific data folders
 grafana-prometheus/grafana/data/
 grafana-prometheus/prometheus/data/
