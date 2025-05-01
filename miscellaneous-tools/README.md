@@ -7,9 +7,8 @@ This document lists the containers configured in the Docker Compose setup for mi
 
 ## 📦 Services in Docker Compose
 
-| Service Name       | Ports Exposed   |
-|--------------------|------------------|
-| **homepage**       | 8050             |
-| **composerize**    | 8051             |
-| **snippet-box**    | 8052             |
-
+| Container name               | Host port | Container port | Purpose        |
+|------------------------------|-----------|----------------|----------------|
+| miscellaneous-homepage       | 10011     | 80             |                |
+| miscellaneous-snippets       | 10012     | 5000           | Web Console    |
+| miscellaneous-composerize    | 10013     | 80             | Web Console    |

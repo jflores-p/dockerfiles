@@ -7,8 +7,10 @@ This document lists the base network containers configured in the Docker Compose
 
 ## 📦 Services in Docker Compose
 
-| Service Name       | Ports Exposed            |
-|--------------------|---------------------------|
-| **pihole**         | 53 (TCP/UDP), 5051, 5052 |
-| **unbound**        | 5053 (TCP/UDP)           |
-| **wireguard**      | 5054 (UDP), 5055 (TCP)   |
+| Container name    | Host port | Container port | Purpose                  |
+|-------------------|-----------|----------------|---------------------------|
+| base-pihole       | 10000     | 443            | Web Console               |
+| base-pihole       | 10001     | 80             | Web Console - deprecated  |
+| base-unbound      | 10002     | 53             | DNS                       |
+| base-wireguard    | 10003     | 51820          | Port forwarding           |
+| base-wireguard    | 10004     | 51821          | Web Console               |

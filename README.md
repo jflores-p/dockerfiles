@@ -24,22 +24,50 @@ The key tools and services included in this project are:
 - **WireGuard**: For secure VPN tunneling.
 - **Unbound**: For DNS resolution and caching.
 
-## TODO
+# 📦 Port Assignments
 
-Organize the ports with a scheme similar to this:
+---
 
-| Container Name               | Host IP     | Host Port (Network-specific) | Container Port(s)               | Network         |
-|------------------------------|-------------|------------------------------|---------------------------------|-----------------|
-| **monitoring-portainer**      | `10.8.1.7`  | `10000:9443`                  | `9443`                          | Monitoring      |
-| **monitoring-grafana**        | `10.8.1.10` | `10010:3000`                  | `3000`                          | Monitoring      |
-| **networking-NPM**            | `10.8.1.11` | `11000:443, 11001:8090`       | `443`, `8090`                   | Networking      |
-| **base-wireguard**            | `10.8.1.4`  | `20000:51820, 20001:51821`    | `51820`, `51821`                | Pi-hole + Unbound |
-| **base-unbound**              | `10.8.1.3`  | `21000:53`                    | `53`                            | Pi-hole + Unbound |
-| **base-pihole**               | `10.8.1.2`  | `22000:80, 22001:443, 22002:53` | `80`, `443`, `53`               | Pi-hole + Unbound |
-| **miscellaneous-snippets**    | `10.8.1.13` | `30000:5000`                  | `5000`                          | Miscellaneous   |
-| **miscellaneous-composerize** | `10.8.1.14` | `31000:80`                    | `80`                            | Miscellaneous   |
-| **miscellaneous-homepage**    | `10.8.1.12` | `32000:80`                    | `80`                            | Miscellaneous   |
-| **testing01_nginx-default**   | `10.8.2.2`  | `40000:80`                    | `80`                            | Testing         |
+## 🟣 Pihole + Unbound Stack
+
+| Container name    | Host port | Container port | Purpose                  |
+|-------------------|-----------|----------------|---------------------------|
+| base-pihole       | 10000     | 443            | Web Console               |
+| base-pihole       | 10001     | 80             | Web Console - deprecated  |
+| base-unbound      | 10002     | 53             | DNS                       |
+| base-wireguard    | 10003     | 51820          | Port forwarding           |
+| base-wireguard    | 10004     | 51821          | Web Console               |
+
+---
+
+## 🟢 Monitoring Tools Stack
+
+| Container name         | Host port | Container port | Purpose        |
+|------------------------|-----------|----------------|----------------|
+| monitoring-portainer   | 10005     | 8000           |                |
+| monitoring-portainer   | 10006     | 9443           | Web Console    |
+| monitoring-grafana     | 10007     | 3000           | Web Console    |
+| monitoring-vnstat      | 10014     |                | Web Console    |
+
+---
+
+## 🔵 Networking Tools Stack
+
+| Container name   | Host port | Container port | Purpose        |
+|------------------|-----------|----------------|----------------|
+| networking-NPM   | 10008     | 81             | Web Console    |
+| networking-NPM   | 10009     | 80             |                |
+| networking-NPM   | 10010     | 443            |                |
+
+---
+
+## 🟡 Miscellaneous Tools Stack
+
+| Container name               | Host port | Container port | Purpose        |
+|------------------------------|-----------|----------------|----------------|
+| miscellaneous-homepage       | 10011     | 80             |                |
+| miscellaneous-snippets       | 10012     | 5000           | Web Console    |
+| miscellaneous-composerize    | 10013     | 80             | Web Console    |
 
 ## 🛠️ How to Set Up
 

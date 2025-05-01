@@ -7,6 +7,8 @@ This document lists the containers configured in the Docker Compose setup for ne
 
 ## 📦 Services in Docker Compose
 
-| Service Name         | Ports Exposed           |
-|----------------------|--------------------------|
-| **proxy-manager**    | 9000, 9001, 9002         |
+| Container name   | Host port | Container port | Purpose        |
+|------------------|-----------|----------------|----------------|
+| networking-NPM   | 10008     | 81             | Web Console    |
+| networking-NPM   | 10009     | 80             |                |
+| networking-NPM   | 10010     | 443            |                |

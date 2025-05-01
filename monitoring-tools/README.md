@@ -7,14 +7,9 @@ This document lists the containers configured in the Docker Compose setup for mo
 
 ## 📦 Services in Docker Compose
 
-| Service Name       | Ports Exposed      |
-|--------------------|---------------------|
-| **watchtower**     | N/A                 |
-| **portainer**      | 8000, 9443          |
-| **noip-duc**       | N/A                 |
-| **ntopng**         | N/A (host network)  |
-| **vnstat**         | 8685                |
-| **grafana**        | 4000                |
-| **cadvisor**       | 8090                |
-| **node-exporter**  | 9100                |
-| **prometheus**     | 9090                |
+| Container name         | Host port | Container port | Purpose        |
+|------------------------|-----------|----------------|----------------|
+| monitoring-portainer   | 10005     | 8000           |                |
+| monitoring-portainer   | 10006     | 9443           | Web Console    |
+| monitoring-grafana     | 10007     | 3000           | Web Console    |
+| monitoring-vnstat      | 10014     |                | Web Console    |
