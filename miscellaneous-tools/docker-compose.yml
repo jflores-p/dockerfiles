@@ -10,19 +10,9 @@ services:
     environment:
       TZ: "America/Lima"
     ports:
-      - "8050:80"
+      - "10011:80"
     volumes:
       - "./homepage:/usr/share/nginx/html:ro"
-    restart: unless-stopped
-    networks:
-      main_network:
-
-  composerize:
-    image: oaklight/composerize:latest
-    container_name: miscellaneous-composerize
-    hostname: composerize
-    ports:
-      - "8051:80"
     restart: unless-stopped
     networks:
       main_network:
@@ -34,9 +24,19 @@ services:
     environment:
       TZ: "America/Lima"
     ports:
-      - "8052:5000"
+      - "10012:5000"
     volumes:
       - "./snippet-box:/app/data"
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  composerize:
+    image: oaklight/composerize:latest
+    container_name: miscellaneous-composerize
+    hostname: composerize
+    ports:
+      - "10013:80"
     restart: unless-stopped
     networks:
       main_network:

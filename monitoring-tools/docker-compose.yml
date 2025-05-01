@@ -24,8 +24,8 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - './portainer:/data'
     ports:
-      - "8000:8000"
-      - "9443:9443"
+      - "10005:8000"
+      - "10006:9443"
     restart: always
     networks:
       main_network:
@@ -37,7 +37,7 @@ services:
     restart: unless-stopped
     user: "472"
     ports:
-      - "4000:3000"
+      - "10007:3000"
     env_file:
       - ./grafana-prometheus/grafana/.env
     volumes:
@@ -211,7 +211,7 @@ services:
       - "/etc/timezone:/etc/timezone:ro"
       - "vnstatdb:/var/lib/vnstat"
     environment:
-      - "HTTP_PORT=8685"
+      - "HTTP_PORT=10014"
       - "HTTP_BIND=*"
       - "HTTP_LOG=/dev/stdout"
       - "LARGE_FONTS=0"
