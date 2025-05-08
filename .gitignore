@@ -11,7 +11,7 @@ cloudflare/cloudflare-ddns-config.json
 grafana-prometheus/grafana/data/
 grafana-prometheus/prometheus/data/
 
-pihole-unbound/pihole/
+pihole-unbound/pihole/pihole/
 portainer/
 
 homeassistant/
