@@ -16,7 +16,7 @@
 
 **/cloudflare/cloudflare-ddns-config.json
 
-proxy-manager/*
+**/proxy-manager/*
 
 #### monitoring
 #

@@ -11,12 +11,13 @@ FOLDERS=("$WORK_DIR/data" "$WORK_DIR/letsencrypt")
 do_zip() {
   echo "Creating encrypted zip file..."
   zip -er "$BACKUP_FILE" "${FOLDERS[@]}"
+#  sudo chmod 777 $BACKUP_FILE
 }
 
 # Function to unzip and decrypt
 do_unzip() {
   echo "Extracting zip file..."
-  unzip "$BACKUP_FILE" -d "$WORK_DIR"
+  unzip "$BACKUP_FILE" #-d "$WORK_DIR"
   
   if [ $? -eq 0 ]; then
     echo "Extraction successful. Deleting $BACKUP_FILE..."
