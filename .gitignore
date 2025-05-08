@@ -1,24 +1,37 @@
-gravity*
+#### general
+#
 
-# Ignore env files not encrypted
 !.env.enc
 !grafana/.env
 *.env
 
+#### pihole-unbound
+#
+
+pihole-unbound/pihole/pihole/
+gravity*
+
+#### networking
+#
+
 cloudflare/cloudflare-ddns-config.json
 
-# Ignore specific data folders
+!proxy-manager/data/
+!proxy-manager/letsencrypt/
+
+#### monitoring
+#
+
 grafana-prometheus/grafana/data/
 grafana-prometheus/prometheus/data/
 
-pihole-unbound/pihole/pihole/
 portainer/
 
 homeassistant/
 
-## NPM
+#### miscellaneous
+#
 
-proxy-manager/letsencrypt/
 
-# Explicitly do NOT ignore ./proxy/data
-!/proxy-manager/data/
+#### test
+#
