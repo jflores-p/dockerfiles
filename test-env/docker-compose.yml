@@ -1,0 +1,67 @@
+services:
+  paperless-broker:
+    image: docker.io/library/redis:7
+    container_name: test-paperless-broker
+    hostname: paperless-broker
+    volumes:
+      - ./paperless/redisdata:/data
+    restart: unless-stopped
+    networks:
+      test_network:
+
+  paperless-webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: test-paperless-ws
+    hostname: paperless-ws
+    depends_on:
+      - paperless-broker
+    ports:
+      - "30000:8000"
+    volumes:
+      - ./paperless/data:/usr/src/paperless/data
+      - ./paperless/media:/usr/src/paperless/media
+      - ./paperless/export:/usr/src/paperless/export
+      - ./paperless/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://paperless-broker:6379
+      PAPERLESS_URL: https://paperless.joakolabs.com
+    restart: unless-stopped
+    networks:
+      test_network:
+
+  paperless-broker2:
+    image: docker.io/library/redis:7
+    container_name: test-paperless-broker2
+    hostname: paperless-broker2
+    volumes:
+      - ./paperless2/redisdata:/data
+    restart: unless-stopped
+    networks:
+      test_network:
+
+  paperless-webserver2:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: test-paperless-ws2
+    hostname: paperless-ws2
+    depends_on:
+      - paperless-broker2
+    ports:
+      - "30001:8000"
+    volumes:
+      - ./paperless2/data:/usr/src/paperless/data
+      - ./paperless2/media:/usr/src/paperless/media
+      - ./paperless2/export:/usr/src/paperless/export
+      - ./paperless2/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://paperless-broker2:6379
+    restart: unless-stopped
+    networks:
+      test_network:
+
+networks:
+  test_network:
+    name: "test_network"
+    ipam:
+      config:
+        - subnet: 10.8.3.0/24
+          gateway: 10.8.3.1

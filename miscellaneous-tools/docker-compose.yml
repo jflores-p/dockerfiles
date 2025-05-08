@@ -40,3 +40,33 @@ services:
     restart: unless-stopped
     networks:
       main_network:
+
+  paperless-broker:
+    image: docker.io/library/redis:7
+    container_name: miscellaneous-paperless-broker
+    hostname: paperless-broker
+    volumes:
+      - ./paperless/redisdata:/data
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  paperless-webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: miscellaneous-paperless-ws
+    hostname: paperless-ws
+    depends_on:
+      - paperless-broker
+    ports:
+      - "10015:8000"
+    volumes:
+      - ./paperless/data:/usr/src/paperless/data
+      - ./paperless/media:/usr/src/paperless/media
+      - ./paperless/export:/usr/src/paperless/export
+      - ./paperless/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://paperless-broker:6379
+      PAPERLESS_URL: https://paperless.joakolabs.com
+    restart: unless-stopped
+    networks:
+      main_network:

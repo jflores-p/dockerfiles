@@ -31,6 +31,10 @@
 #### miscellaneous
 #
 
+**/paperless/**
 
 #### test
 #
+
+**/test-env/**
+!**/test-env/docker-compose.yml
