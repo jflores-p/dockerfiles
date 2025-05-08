@@ -6,8 +6,10 @@ services:
     ports:
       # These ports are in format <host-port>:<container-port>
       - '10008:81' # Admin Web Port
-      - '10009:80' # Public HTTP Port
-      - '10010:443' # Public HTTPS Port
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+        #- '10009:80' # Public HTTP Port
+        #- '10010:443' # Public HTTPS Port
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
     environment:

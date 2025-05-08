@@ -16,8 +16,7 @@ gravity*
 
 cloudflare/cloudflare-ddns-config.json
 
-!proxy-manager/data/
-!proxy-manager/letsencrypt/
+proxy-manager/*
 
 #### monitoring
 #
