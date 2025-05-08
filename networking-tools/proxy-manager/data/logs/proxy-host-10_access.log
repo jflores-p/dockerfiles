@@ -1,2 +1,0 @@
-[07/May/2025:23:00:43 +0000] - 400 400 - GET https ha.joakolabs.com "/" [Client 192.168.18.3] [Length 16] [Gzip -] [Sent-to 192.168.18.66] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" "https://proxy.joakolabs.com/"
-[07/May/2025:23:00:43 +0000] - 400 400 - GET https ha.joakolabs.com "/favicon.ico" [Client 192.168.18.3] [Length 16] [Gzip -] [Sent-to 192.168.18.66] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" "https://ha.joakolabs.com/"

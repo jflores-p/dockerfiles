@@ -1,32 +1,32 @@
 #### general
 #
 
-!.env.enc
-!grafana/.env
+!**/.env.enc
+!**/grafana/.env
 *.env
 
 #### pihole-unbound
 #
 
-pihole-unbound/pihole/pihole/
-gravity*
+**/pihole-unbound/pihole/pihole/
+**/gravity*
 
 #### networking
 #
 
-cloudflare/cloudflare-ddns-config.json
+**/cloudflare/cloudflare-ddns-config.json
 
 proxy-manager/*
 
 #### monitoring
 #
 
-grafana-prometheus/grafana/data/
-grafana-prometheus/prometheus/data/
+**/grafana-prometheus/grafana/data/
+**/grafana-prometheus/prometheus/data/
 
-portainer/
+**/portainer/
 
-homeassistant/
+**/homeassistant/
 
 #### miscellaneous
 #
