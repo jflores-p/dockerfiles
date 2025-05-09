@@ -8,7 +8,7 @@
 #### pihole-unbound
 #
 
-**/pihole-unbound/pihole/pihole/
+**/pihole-unbound/pihole/**
 **/gravity*
 
 #### networking

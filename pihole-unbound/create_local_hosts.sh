@@ -29,21 +29,21 @@ SUBDOMAINS=(
 )
 
 # Temp output file (inside script dir)
-OUTPUT="$SCRIPT_DIR/generated_hosts.txt"
+OUTPUT="$SCRIPT_DIR/generated_dnsmasq.conf"
 
 # Start with a header
-echo "# Dynamic hosts file generated on $(date)" > "$OUTPUT"
+echo "# Dynamic dnsmasq config generated on $(date)" > "$OUTPUT"
 
-# Loop through subdomains and append to file
+# Loop through subdomains and append in dnsmasq format
 for SUB in "${SUBDOMAINS[@]}"; do
-  echo "$IP $SUB.$DOMAIN" >> "$OUTPUT"
+  echo "address=/$SUB.$DOMAIN/$IP" >> "$OUTPUT"
 done
 
-echo "Hosts file generated: $OUTPUT"
+echo "dnsmasq config generated: $OUTPUT"
 
-# Move to Pi-hole dnsmasq directory with the name 'custom.list'
+# Move to Pi-hole dnsmasq directory with the name '99-custom.conf'
 TARGET_DIR="$SCRIPT_DIR/pihole/dnsmasq"
-TARGET_FILE="$TARGET_DIR/custom.list"
+TARGET_FILE="$TARGET_DIR/joakolabs-custom.conf"
 
 # Make sure the target directory exists
 mkdir -p "$TARGET_DIR"
@@ -51,7 +51,7 @@ mkdir -p "$TARGET_DIR"
 # Move (overwrite) the file
 mv "$OUTPUT" "$TARGET_FILE"
 
-echo "Moved hosts file to: $TARGET_FILE"
+echo "Moved dnsmasq config to: $TARGET_FILE"
 
-# 🔥 Clean up any leftover generated_hosts.txt just in case
+# 🔥 Clean up any leftover generated file just in case
 [ -f "$OUTPUT" ] && rm "$OUTPUT" && echo "Cleaned up temp file: $OUTPUT"

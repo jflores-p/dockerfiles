@@ -1,62 +1,51 @@
 services:
-  paperless-broker:
-    image: docker.io/library/redis:7
-    container_name: test-paperless-broker
-    hostname: paperless-broker
-    volumes:
-      - ./paperless/redisdata:/data
-    restart: unless-stopped
-    networks:
-      test_network:
-
-  paperless-webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
-    container_name: test-paperless-ws
-    hostname: paperless-ws
-    depends_on:
-      - paperless-broker
+  sui:
+    image: nginx:alpine
     ports:
-      - "30000:8000"
+      - "30000:80"
     volumes:
-      - ./paperless/data:/usr/src/paperless/data
-      - ./paperless/media:/usr/src/paperless/media
-      - ./paperless/export:/usr/src/paperless/export
-      - ./paperless/consume:/usr/src/paperless/consume
+      - "./sui-master:/usr/share/nginx/html:ro"
+    networks:
+      test_network:
+ 
+  pihole:
+    image: pihole/pihole:latest
+    container_name: test-pihole
+    hostname: pihole
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     environment:
-      PAPERLESS_REDIS: redis://paperless-broker:6379
-      PAPERLESS_URL: https://paperless.joakolabs.com
-    restart: unless-stopped
-    networks:
-      test_network:
-
-  paperless-broker2:
-    image: docker.io/library/redis:7
-    container_name: test-paperless-broker2
-    hostname: paperless-broker2
+      # / Change the Web UI Password:
+      FTLCONF_webserver_api_password: "94794password"
+      TZ: "America/Lima"
+      FTLCONF_dns_listeningMode: "all"
+      FTLCONF_dns_upstreams: "10.8.3.3#30002"
     volumes:
-      - ./paperless2/redisdata:/data
-    restart: unless-stopped
-    networks:
-      test_network:
-
-  paperless-webserver2:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
-    container_name: test-paperless-ws2
-    hostname: paperless-ws2
-    depends_on:
-      - paperless-broker2
+      - './pihole/pihole:/etc/pihole'
+      - './pihole/dnsmasq:/etc/dnsmasq.d'
     ports:
-      - "30001:8000"
-    volumes:
-      - ./paperless2/data:/usr/src/paperless/data
-      - ./paperless2/media:/usr/src/paperless/media
-      - ./paperless2/export:/usr/src/paperless/export
-      - ./paperless2/consume:/usr/src/paperless/consume
-    environment:
-      PAPERLESS_REDIS: redis://paperless-broker2:6379
+      - "30001:80/tcp"
+      - "30009:443/tcp"
     restart: unless-stopped
     networks:
       test_network:
+        ipv4_address: 10.8.3.4
+
+  unbound: 
+    image: mvance/unbound-rpi:latest # remember to change this if you're using rpi
+    container_name: test-unbound
+    hostname: unbound
+    volumes:
+      - './unbound:/opt/unbound/etc/unbound'
+    ports:
+      - "30002:53/tcp"
+      - "30002:53/udp"
+    healthcheck:
+      test: ["NONE"]
+    restart: unless-stopped
+    networks:
+      test_network: 
+        ipv4_address: 10.8.3.3
 
 networks:
   test_network:
