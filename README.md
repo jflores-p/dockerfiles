@@ -68,6 +68,7 @@ The key tools and services included in this project are:
 | miscellaneous-homepage       | 10011     | 80             |                |
 | miscellaneous-snippets       | 10012     | 5000           | Web Console    |
 | miscellaneous-composerize    | 10013     | 80             | Web Console    |
+| miscellaneous-paperless      | 10014     | 8000           | Web Console    |
 
 ## 🛠️ How to Set Up
 

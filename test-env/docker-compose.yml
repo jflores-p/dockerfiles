@@ -8,45 +8,6 @@ services:
     networks:
       test_network:
  
-  pihole:
-    image: pihole/pihole:latest
-    container_name: test-pihole
-    hostname: pihole
-    labels:
-      - "com.centurylinklabs.watchtower.enable=false"
-    environment:
-      # / Change the Web UI Password:
-      FTLCONF_webserver_api_password: "94794password"
-      TZ: "America/Lima"
-      FTLCONF_dns_listeningMode: "all"
-      FTLCONF_dns_upstreams: "10.8.3.3#30002"
-    volumes:
-      - './pihole/pihole:/etc/pihole'
-      - './pihole/dnsmasq:/etc/dnsmasq.d'
-    ports:
-      - "30001:80/tcp"
-      - "30009:443/tcp"
-    restart: unless-stopped
-    networks:
-      test_network:
-        ipv4_address: 10.8.3.4
-
-  unbound: 
-    image: mvance/unbound-rpi:latest # remember to change this if you're using rpi
-    container_name: test-unbound
-    hostname: unbound
-    volumes:
-      - './unbound:/opt/unbound/etc/unbound'
-    ports:
-      - "30002:53/tcp"
-      - "30002:53/udp"
-    healthcheck:
-      test: ["NONE"]
-    restart: unless-stopped
-    networks:
-      test_network: 
-        ipv4_address: 10.8.3.3
-
 networks:
   test_network:
     name: "test_network"
