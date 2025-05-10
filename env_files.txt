@@ -1,3 +1,2 @@
-./pihole-unbound/.env
-./networking-tools/.env
-./networking-tools/cloudflare/cloudflare-ddns-config.json
+./networking/.env
+./networking/cloudflare/cloudflare-ddns-config.json

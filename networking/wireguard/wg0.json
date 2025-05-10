@@ -1,0 +1,31 @@
+{
+  "server": {
+    "privateKey": "qGXm/Psgp01etLxVBXeu1fMN+tWmFNmUafP1ToI5qVE=",
+    "publicKey": "xJezM6BZzBngACNIMI5QLGVvOkxFz0XGCVj1vWkQqjk=",
+    "address": "10.8.0.1"
+  },
+  "clients": {
+    "0e1566e4-219a-44c8-84c8-00860cc9f9ac": {
+      "id": "0e1566e4-219a-44c8-84c8-00860cc9f9ac",
+      "name": "Joaquin-iPhone",
+      "address": "10.8.0.2",
+      "privateKey": "MMr/GTaqU39Wg4IBxcfrS2wF4ix2bkfyb34HotxhMXs=",
+      "publicKey": "XcNkDJ/pgV8Jb7ZXsLxTKXv3ORqUMiscKib1Jx5X8G0=",
+      "preSharedKey": "SeUGP9JUGHmn6PZELTJU2kOTlgRlzPaMHY9W7VYQN+8=",
+      "createdAt": "2024-05-11T22:52:41.922Z",
+      "updatedAt": "2024-05-11T22:52:41.922Z",
+      "enabled": true
+    },
+    "110b42b3-0170-4d77-b66f-42cec52fea86": {
+      "id": "110b42b3-0170-4d77-b66f-42cec52fea86",
+      "name": "Papa-iPad",
+      "address": "10.8.0.3",
+      "privateKey": "uKXeciSb0knG1NT0Y9kGyZW7sOGCxGw5IYN2T0QT108=",
+      "publicKey": "3fet9/erUYGs885NLDDeWC2SwOvAaIQciWsFXTJALQU=",
+      "preSharedKey": "HQOB49T553v0QB3qQP81BlbVcpjN68dWY9T7ucKSFyE=",
+      "createdAt": "2024-05-11T22:59:32.152Z",
+      "updatedAt": "2024-05-11T22:59:32.152Z",
+      "enabled": true
+    }
+  }
+}

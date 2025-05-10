@@ -1,0 +1,92 @@
+networks:
+  main_network:
+    external: true
+
+services:
+  first-homepage:
+    image: nginx:alpine
+    container_name: first-homepage
+    hostname: first-homepage
+    environment:
+      TZ: "America/Lima"
+    ports:
+      - "10011:80"
+    volumes:
+      - "./first-homepage:/usr/share/nginx/html:ro"
+    restart: unless-stopped
+    profiles:
+        - skip
+    networks:
+      main_network:
+          
+  snippet-box:
+    image: pawelmalak/snippet-box:arm
+    container_name: snippets
+    hostname: snippet-box
+    environment:
+      TZ: "America/Lima"
+    ports:
+      - "10012:5000"
+    volumes:
+      - "./snippet-box:/app/data"
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  composerize:
+    image: oaklight/composerize:latest
+    container_name: composerize
+    hostname: composerize
+    ports:
+      - "10013:80"
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  paperless-broker:
+    image: docker.io/library/redis:7
+    container_name: paperless-broker
+    hostname: paperless-broker
+    volumes:
+      - ./paperless/redisdata:/data
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  paperless-webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless-ws
+    hostname: paperless-ws
+    depends_on:
+      - paperless-broker
+    ports:
+      - "10015:8000"
+    volumes:
+      - ./paperless/data:/usr/src/paperless/data
+      - ./paperless/media:/usr/src/paperless/media
+      - ./paperless/export:/usr/src/paperless/export
+      - ./paperless/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://paperless-broker:6379
+      PAPERLESS_URL: https://paperless.joakolabs.com
+    restart: unless-stopped
+    networks:
+      main_network:
+        
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    hostname: homepage
+    ports:
+      - "10016:3000"
+    volumes:
+      - ./homepage/config:/app/config # Make sure your local config directory exists
+      - ./homepage/icons:/app/public/icons
+      - ./homepage/images:/app/public/images
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: gethomepage.dev,homepage.joakolabs.com,pi.local:10016 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      PUID: 1000
+      PGID: 1000
+    networks:
+      main_network:

@@ -1,0 +1,242 @@
+networks:
+  main_network:
+    external: true
+
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    hostname: watchtower
+    environment:
+      WATCHTOWER_SCHEDULE: " 0 5 * * *"
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/etc/localtim:/etc/localtime:ro'
+    restart: unless-stopped
+    networks:
+      main_network:
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    hostname: portainer
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - './portainer:/data'
+    ports:
+      - "10005:8000"
+      - "10006:9443"
+    restart: always
+    networks:
+      main_network:
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    restart: unless-stopped
+    user: "472"
+    ports:
+      - "10007:3000"
+    env_file:
+      - ./grafana-prometheus/grafana/.env
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana-prometheus/grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: ["CMD", "wget", "-O", "/dev/null", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    labels:
+      - "com.example.description=Grafana Dashboard"
+      - "com.example.service=monitoring"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      main_network:
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: grafana-cadvisor
+    hostname: cadvisor
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    expose:
+      - 8090
+    command:
+      - '-housekeeping_interval=15s'
+      - '-docker_only=true'
+      - '-store_container_labels=false'
+    devices:
+      - /dev/kmsg
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+      - /etc/machine-id:/etc/machine-id:ro
+    healthcheck:
+      test: ["CMD", "wget", "-O", "/dev/null", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "com.example.description=cAdvisor Container Monitoring"
+      - "com.example.service=monitoring"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 256m
+    mem_reservation: 128m
+    networks:
+      main_network:
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: grafana-node-exporter
+    hostname: exporter
+    restart: unless-stopped
+    expose:
+      - 9100
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/host
+      - --collector.filesystem.ignored-mount-points
+      - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+      - /:/host:ro,rslave
+    healthcheck:
+      test: ["CMD", "wget", "-O", "/dev/null", "http://localhost:9100/metrics"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "com.example.description=Node Exporter"
+      - "com.example.service=monitoring"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 128m
+    mem_reservation: 64m
+    networks:
+      main_network:
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: grafana-prometheus
+    hostname: prometheus
+    restart: unless-stopped
+    user: "nobody"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=1y'
+      - '--storage.tsdb.retention.size=10GB'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    expose:
+      - 9090
+    volumes:
+      - prometheus-data:/prometheus
+      - ./grafana-prometheus/prometheus:/etc/prometheus/
+    depends_on:
+      - cadvisor
+      - node-exporter
+    healthcheck:
+      test: ["CMD", "wget", "-O", "/dev/null", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    labels:
+      - "com.example.description=Prometheus Time Series Database"
+      - "com.example.service=monitoring"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1g
+    mem_reservation: 512m
+    networks:
+      main_network:
+
+  homeassistant:
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    container_name: homeassistant
+    hostname: homeassistant
+    volumes:
+      - './homeassistant:/config'
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/run/dbus:/run/dbus:ro'
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+
+  ntopng:
+    image: ntop/ntopng_arm64.dev:latest
+    container_name: ntopng
+    hostname: ntopng
+    stdin_open: true
+    tty: true
+    environment:
+      TZ: "America/Lima"
+    restart: unless-stopped
+    command: -i eth0
+    network_mode: host
+
+  vnstat:
+    image: vergoh/vnstat:latest
+    container_name: vnstat
+    hostname: vnstat
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "vnstatdb:/var/lib/vnstat"
+    environment:
+      - "HTTP_PORT=10014"
+      - "HTTP_BIND=*"
+      - "HTTP_LOG=/dev/stdout"
+      - "LARGE_FONTS=0"
+      - "CACHE_TIME=1"
+      - "DARK_MODE=0"
+      - "PAGE_REFRESH=0"
+      - "INDEX_IMAGES_PER_ROW=1"
+      - "INDEX_IMAGE_OUTPUT=hs"
+      - "VNSTAT_RateUnit=1"
+      - "VNSTAT_InterfaceOrder=0"
+      - "VNSTAT_QueryMode=0"
+    restart: unless-stopped
+    network_mode: host
+
+volumes:
+  vnstatdb:
+    labels:
+      - "com.example.description=Vnstat Persistent Data"
+      - "com.example.service=monitoring"
+  grafana-data:
+    labels:
+      - "com.example.description=Grafana Persistent Data"
+      - "com.example.service=monitoring"
+  prometheus-data:
+    labels:
+      - "com.example.description=Prometheus Persistent Data"
+      - "com.example.service=monitoring"
+
