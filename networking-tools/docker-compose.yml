@@ -59,6 +59,20 @@ services:
     container_name: networking-cloudfare-tunnel
     hostname: cloudfare-tunnel
     command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    profiles:
+      - skip
+    networks:
+      main_network:
+
+  myspeed:
+    image: germannewsmaker/myspeed
+    container_name: networking-myspeed
+    hostname: myspeed
+    ports:
+      - 10017:5216
+    volumes:
+      - ./myspeed:/myspeed/data
+    restart: unless-stopped
     networks:
       main_network:
 
