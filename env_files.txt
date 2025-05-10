@@ -1,2 +1,4 @@
+./monitoring/.env
+
 ./networking/.env
 ./networking/cloudflare/cloudflare-ddns-config.json

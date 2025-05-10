@@ -2,17 +2,13 @@
 #
 
 !**/.env.enc
-!**/grafana/.env
 *.env
 
-#### pihole-unbound
+#### networking
 #
 
 **/pihole/**
 **/gravity*
-
-#### networking
-#
 
 **/cloudflare/cloudflare-ddns-config.json
 

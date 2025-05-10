@@ -100,6 +100,13 @@ services:
       test: ["CMD", "/usr/bin/check-health"]
       interval: 10s
       timeout: 3s
+    depends_on:
+      pihole:
+        condition: service_started
+      unbound:
+        condition: service_started
+      wireguar:
+        condition: service_started
     restart: unless-stopped
     networks:
       main_network:
@@ -112,6 +119,13 @@ services:
       - NOIP_USERNAME=${NOIP_USERNAME}
       - NOIP_PASSWORD=${NOIP_PASSWORD}
       - NOIP_HOSTNAMES=${NOIP_HOSTNAMES}
+    depends_on:
+      pihole:
+        condition: service_started
+      unbound:
+        condition: service_started
+      wireguar:
+        condition: service_started
     restart: unless-stopped
     profiles:
         - skip
@@ -129,6 +143,13 @@ services:
       - PGID=1000
     volumes:
       - ./cloudflare/cloudflare-ddns-config.json:/config.json
+    depends_on:
+      pihole:
+        condition: service_started
+      unbound:
+        condition: service_started
+      wireguar:
+        condition: service_started
     restart: unless-stopped
     network_mode: "host"
 
@@ -139,6 +160,13 @@ services:
     command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
     profiles:
       - skip
+    depends_on:
+      pihole:
+        condition: service_started
+      unbound:
+        condition: service_started
+      wireguar:
+        condition: service_started
     networks:
       main_network:
 
@@ -150,10 +178,13 @@ services:
       - "10017:5216"
     volumes:
       - ./myspeed:/myspeed/data
+    depends_on:
+      pihole:
+        condition: service_started
+      unbound:
+        condition: service_started
+      wireguar:
+        condition: service_started
     restart: unless-stopped
     networks:
       main_network:
-
-networks:
-  main_network:
-    external: true
