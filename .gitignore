@@ -28,6 +28,9 @@
 #
 
 **/paperless/**
+**/homepage/config/**
+
+!**/homepage_backup.zip
 
 #### test
 #
