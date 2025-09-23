@@ -79,4 +79,38 @@ To get started with this Dockerized environment, follow these steps:
 ```bash
 git clone https://github.com/your-username/monitoring-network-tools.git
 cd monitoring-network-tools
+```
+## Adding k3s to the equation
 
+### Raspberry Pi – Enabling cgroups for k3s
+
+This document explains the initial configuration changes needed on a Raspberry Pi to run **k3s** properly.  
+
+---
+
+#### 1. `/boot/firmware/cmdline.txt`
+
+Add the following parameters at the end of the single line:
+
+	cgroup_memory=1 cgroup_enable=memory
+
+**Reason**  
+- Raspberry Pi OS does not enable memory cgroups by default.  
+- Kubernetes (including **k3s**) requires memory cgroups to enforce pod resource limits and scheduling.  
+- Without these parameters, k3s will not function correctly.  
+
+---
+
+#### 2. `/etc/docker/daemon.json`
+
+Create or edit the file with:
+
+```json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+
+**Reason**  
+- Docker defaults to the cgroupfs driver.
+- Modern Kubernetes distributions expect the systemd driver for consistent cgroup management.
+- Aligning Docker with systemd avoids resource and stability issues when running Docker containers alongside k3s.
