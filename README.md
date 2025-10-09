@@ -30,13 +30,13 @@ The key tools and services included in this project are:
 
 ## 🟣 Pihole + Unbound Stack
 
-| Container name    | Host port | Container port | Purpose                  |
+| Container name    | Host port | Container port | Purpose                   |
 |-------------------|-----------|----------------|---------------------------|
-| base-pihole       | 10000     | 443            | Web Console               |
-| base-pihole       | 10001     | 80             | Web Console - deprecated  |
-| base-unbound      | 10002     | 53             | DNS                       |
-| base-wireguard    | 10003     | 51820          | Port forwarding           |
-| base-wireguard    | 10004     | 51821          | Web Console               |
+| pihole            | 10000     | 443            | Web Console               |
+| pihole            | 10001     | 80             | Web Console - deprecated  |
+| unbound           | 10002     | 53             | DNS                       |
+| wireguard         | 10003     | 51820          | Port forwarding           |
+| wireguard         | 10004     | 51821          | Web Console               |
 
 ---
 
@@ -44,10 +44,14 @@ The key tools and services included in this project are:
 
 | Container name         | Host port | Container port | Purpose        |
 |------------------------|-----------|----------------|----------------|
-| monitoring-portainer   | 10005     | 8000           |                |
-| monitoring-portainer   | 10006     | 9443           | Web Console    |
-| monitoring-grafana     | 10007     | 3000           | Web Console    |
-| monitoring-vnstat      | 10014     |                | Web Console    |
+| portainer              | 10005     | 8000           |                |
+| portainer              | 10006     | 9443           | Web Console    |
+| grafana                | 10007     | 3000           | Web Console    |
+| vnstat                 | 10014     | 10014          | Web Console    |
+| cadvisor               | 8090      | 8090           |                |
+| node-exporter          | 9100      | 9100           |                |
+| prometheus             | 9090      | 9090           |                |
+| homeassistant          | 8123      | 8123           |                |
 
 ---
 
@@ -55,9 +59,10 @@ The key tools and services included in this project are:
 
 | Container name   | Host port | Container port | Purpose        |
 |------------------|-----------|----------------|----------------|
-| networking-NPM   | 10008     | 81             | Web Console    |
-| networking-NPM   | 10009     | 80             |                |
-| networking-NPM   | 10010     | 443            |                |
+| NPM              | 10008     | 81             | Web Console    |
+| NPM              | 80        | 80             |                |
+| NPM              | 443       | 443            |                |
+| my-speed	   | 10017     | 443            | Web Console    |
 
 ---
 
@@ -65,10 +70,11 @@ The key tools and services included in this project are:
 
 | Container name               | Host port | Container port | Purpose        |
 |------------------------------|-----------|----------------|----------------|
-| miscellaneous-homepage       | 10011     | 80             |                |
-| miscellaneous-snippets       | 10012     | 5000           | Web Console    |
-| miscellaneous-composerize    | 10013     | 80             | Web Console    |
-| miscellaneous-paperless      | 10014     | 8000           | Web Console    |
+| first-homepage               | 10011     | 80             |                |
+| snippets                     | 10012     | 5000           | Web Console    |
+| composerize                  | 10013     | 80             | Web Console    |
+| paperless                    | 10015     | 8000           | Web Console    |
+| homepage                     | 10016     | 3000           |                |
 
 ## 🛠️ How to Set Up
 
