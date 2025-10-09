@@ -2,3 +2,5 @@
 
 ./networking/.env
 ./networking/cloudflare/cloudflare-ddns-config.json
+
+./immich/.env

@@ -32,6 +32,11 @@
 
 !**/homepage_backup.zip
 
+#### immich
+#
+
+**/immich/postgres/*
+
 #### test
 #
 
