@@ -115,5 +115,6 @@ services:
       HOMEPAGE_ALLOWED_HOSTS: gethomepage.dev,homepage.joakolabs.com,pi.local:10016 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
       PUID: 1000
       PGID: 1000
+    restart: always
     networks:
       main_network:

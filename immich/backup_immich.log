@@ -1,0 +1,7 @@
+🔒 Starting Immich backup...
+Source: /root/immich
+Destination: /root/gdrivebkp/immich_backup_20251015_040001.tar.gz.gpg
+tar: Removing leading `/' from member names
+tar: /root/immich: Cannot stat: No such file or directory
+tar: Exiting with failure status due to previous errors
+gpg: can't open '/root/.gpg_pass': No such file or directory
