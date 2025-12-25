@@ -18,7 +18,7 @@ HOME_DIR=$(getent passwd ${SUDO_USER:-$LOGNAME} | cut -d: -f6 2>/dev/null || ech
 
 # --- Common Settings ---
 GPG_PASS="$HOME_DIR/.gpg_pass"
-BACKUP_ROOT="$HOME_DIR/gdrivebkp"
+BACKUP_ROOT="$HOME_DIR/bkps"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DATE=$(date +"%Y%m%d")
 
@@ -62,8 +62,7 @@ do_homepage_unzip() {
 do_paperless() {
     SRC_BASE="$HOME_DIR/dockerfiles/misc/paperless"
     DEST_DIR="$BACKUP_ROOT"
-    TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-    BACKUP_PATH="$DEST_DIR/paperless_backup_${TIMESTAMP}.tar.gz.gpg"
+    BACKUP_PATH="$DEST_DIR/paperless_backup_${DATE}.tar.gz.gpg"
 
     echo "🔒 Starting Paperless backup..."
     echo "Destination: $BACKUP_PATH"

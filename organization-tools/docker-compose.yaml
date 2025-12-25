@@ -1,0 +1,48 @@
+networks:
+  main_network:
+    external: true
+
+services:
+  vikunja:
+    image: vikunja/vikunja
+    container_name: vikunja
+    hostname: vikunja
+    env_file: .env
+    environment:
+      VIKUNJA_SERVICE_JWTSECRET:
+      VIKUNJA_SERVICE_PUBLICURL: https://vikunja.joakolabs.com/
+        #VIKUNJA_DATABASE_HOST: vikunja_db
+        #VIKUNJA_DATABASE_TYPE: postgres
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_DATABASE_PASSWORD:       
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
+    ports:
+      - 10018:3456
+    volumes:
+      - ./vikunja:/app/vikunja/files
+      - ./vikunja-db:/db
+    restart: unless-stopped
+      #    depends_on:
+      #      vikunja_db:
+      #        condition: service_healthy
+    networks:
+      main_network:
+
+        #  vikunja_db:
+        #    image: postgres:18
+        #    container_name: vikunja_db
+        #    hostname: vikunja_db
+        #    environment:
+        #      POSTGRES_PASSWORD:
+        #      POSTGRES_USER:
+        #    env_file: .env
+        #    volumes:
+        #      - ./vikunja-db:/var/lib/postgresql/data
+        #    restart: unless-stopped
+        #    healthcheck:
+        #      test: ["CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER"]
+        #      interval: 2s
+        #      start_period: 30s
+        #    networks:
+        #      main_network:

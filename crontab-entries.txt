@@ -11,7 +11,7 @@
 0 3 * * 1 /home/joako/dockerfiles/backup.sh homepage zip >> /home/joako/dockerfiles/bkp_logs/homepage.log 2>&1
 
 # 🌐 Nginx Proxy Manager Backup — every Monday at 03:30 AM
-30 3 * * 1 /home/joako/dockerfiles/backup.sh npm zip >> /home/joako/dockerfiles/bkp_logs/npm.log 2>&1
+30 3 * * 1 /home/joako/dockerfiles/backup.sh proxy zip >> /home/joako/dockerfiles/bkp_logs/npm.log 2>&1
 
 # 🖼️ Immich Backup — every Wednesday and Saturday at 04:00 AM
 0 4 * * 3,6 /home/joako/dockerfiles/backup.sh immich zip >> /home/joako/dockerfiles/bkp_logs/immich.log 2>&1

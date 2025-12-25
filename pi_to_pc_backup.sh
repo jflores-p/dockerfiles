@@ -1,10 +1,14 @@
 #!/bin/bash
-SRC="/home/joako/gdrivebkp/"
+SRC="/home/joako/bkps/"
 DEST="/mnt/winbackup/pi_backups/"
-LOG="/var/log/pi_to_pc_backup.log"
+LOG="/home/joako/dockerfiles/bkp_logs/pi_to_pc_backup.log"
 
-# Only run if share is available
+echo "=== Backup started at $(date) ===" >> "$LOG"
+
 if mountpoint -q /mnt/winbackup; then
-    rsync -avh --delete --progress "$SRC" "$DEST" >> "$LOG" 2>&1
+    sudo rsync -avh --delete --progress "$SRC" "$DEST" >> "$LOG" 2>&1
+    echo "=== Backup completed successfully at $(date) ===" >> "$LOG"
+else
+    echo "Share not mounted at $(date), skipping backup." >> "$LOG"
 fi
 
