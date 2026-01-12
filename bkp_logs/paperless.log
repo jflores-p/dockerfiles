@@ -236,3 +236,66 @@ Included directories:
   - /home/joako/dockerfiles/misc/paperless/media
   - /home/joako/dockerfiles/misc/paperless/redisdata
 ✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20251223.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20251225.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20251225.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20251227.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20251227.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20251231.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20251231.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20260101.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20260101.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20260103.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20260103.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20260105.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20260105.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20260107.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20260107.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20260109.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20260109.tar.gz.gpg
+🔒 Starting Paperless backup...
+Destination: /home/joako/bkps/paperless_backup_20260111.tar.gz.gpg
+Included directories:
+  - /home/joako/dockerfiles/misc/paperless/data
+  - /home/joako/dockerfiles/misc/paperless/media
+  - /home/joako/dockerfiles/misc/paperless/redisdata
+✅ Paperless backup completed: /home/joako/bkps/paperless_backup_20260111.tar.gz.gpg

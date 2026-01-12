@@ -93,3 +93,28 @@ Source: /home/joako/immich
 Destination: /home/joako/bkps/immich_backup_20251224_040001.tar.gz.gpg
 tar: Removing leading `/' from member names
 ✅ Immich backup completed: /home/joako/bkps/immich_backup_20251224_040001.tar.gz.gpg
+🔒 Starting Immich backup...
+Source: /home/joako/immich
+Destination: /home/joako/bkps/immich_backup_20251227_040001.tar.gz.gpg
+tar: Removing leading `/' from member names
+✅ Immich backup completed: /home/joako/bkps/immich_backup_20251227_040001.tar.gz.gpg
+🔒 Starting Immich backup...
+Source: /home/joako/immich
+Destination: /home/joako/bkps/immich_backup_20251231_040001.tar.gz.gpg
+tar: Removing leading `/' from member names
+✅ Immich backup completed: /home/joako/bkps/immich_backup_20251231_040001.tar.gz.gpg
+🔒 Starting Immich backup...
+Source: /home/joako/immich
+Destination: /home/joako/bkps/immich_backup_20260103_040001.tar.gz.gpg
+tar: Removing leading `/' from member names
+✅ Immich backup completed: /home/joako/bkps/immich_backup_20260103_040001.tar.gz.gpg
+🔒 Starting Immich backup...
+Source: /home/joako/immich
+Destination: /home/joako/bkps/immich_backup_20260107_040001.tar.gz.gpg
+tar: Removing leading `/' from member names
+✅ Immich backup completed: /home/joako/bkps/immich_backup_20260107_040001.tar.gz.gpg
+🔒 Starting Immich backup...
+Source: /home/joako/immich
+Destination: /home/joako/bkps/immich_backup_20260110_040001.tar.gz.gpg
+tar: Removing leading `/' from member names
+✅ Immich backup completed: /home/joako/bkps/immich_backup_20260110_040001.tar.gz.gpg
