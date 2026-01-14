@@ -118,3 +118,21 @@ services:
     restart: always
     networks:
       main_network:
+
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    hostname: filebrowser
+    ports:
+      - "10019:80"
+    volumes:
+      - ./paperless/media/documents/archive:/srv
+      - ./filebrowser/database:/database
+      - ./filebrowser/config:/config
+    environment:
+      - PUID=$(id -u)
+      - GUID=$(id -g)
+    restart: always
+    networks:
+      main_network:
+
