@@ -4,3 +4,5 @@
 ./networking/cloudflare/cloudflare-ddns-config.json
 
 ./immich/.env
+
+./misc/.env

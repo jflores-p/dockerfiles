@@ -1,0 +1,81 @@
+<div id="readability-page-1" class="page"><div>
+			
+
+			<p><span><strong>** Important: Ivanti’s policy is to support only those operating systems that are actively supported by their original manufacturers. Operating systems that have reached end-of-support by their vendor are not eligible for Ivanti support.&nbsp;</strong></span></p>
+
+			
+
+			<h3><strong>EPM Windows</strong> <strong>Agent</strong></h3>
+
+			<p>For further information about installing Windows agents,&nbsp;<a href="https://hub.ivanti.com/s/article/Ivanti-Endpoint-Manager-and-Endpoint-Security-Agent-Deployment-Landing-Page?ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1">Ivanti Endpoint Manager and Endpoint Security - Windows Agent Deployment Landing Page</a></p>
+
+			
+
+			<p><strong><span>&nbsp;Important to note, Ivanti does not supported on "Home" editions of Windows®.</span></strong> Unless otherwise noted x86 and x64 variants are supported. Ivanti recommends all systems be upgraded to the latest Service Pack or Update where appropriate.</p>
+
+			
+
+			<table><tbody><tr><td colspan="1" rowspan="1"><strong>Operating System</strong></td><td colspan="1" rowspan="1"><strong>2022</strong></td><td colspan="1" rowspan="1"><strong>2024</strong></td></tr><tr><td colspan="1" rowspan="1">Windows 7</td><td colspan="1" rowspan="1"><strong>Limited Support, see note below</strong></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows 8.1</td><td colspan="1" rowspan="1"><strong>Limited Support, see note below</strong></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows 10, <em>see note below</em></td><td colspan="1" rowspan="1"><span><strong>Supported *</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported *</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows 11, <em>see note below</em></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows 10 &amp; Windows 11 ARM, <em>see note below</em></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Server 2012 R2, <em>see note below</em></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Server 2016</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Server 2019</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Server 2022</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Server 2025</td><td colspan="1" rowspan="1"><span><strong>Supported with SU7</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported with SU1</strong></span></td></tr></tbody></table>
+
+			
+
+			<ul><li>
+				<ul><li>
+					<ul><li><strong>Windows 11:&nbsp;</strong>Unless otherwise noted, support status applies to all released versions of Windows 11 currently supported by Microsoft.</li><li><strong>Windows 10: </strong>Windows 10 has reached EOL, Microsoft's ESU program extends critical and important updates until Nov of 2029. Ivanti will continue to provide Patch Content under the ESU program, as well as critical security vulnerability updates to the Endpoint Manager product for the platform until the ESU program ends. <a href="https://hub.ivanti.com/s/article/Custom-Patch-Support-for-Microsoft-Windows-10-Extended-Security-Updates-ESU?ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1">Custom Patch Support for Microsoft Windows 10 Extended Security Updates (ESU)</a></li><li><strong>Server 2012 R2:</strong> As of October 10, 2023, Microsoft has designated Windows Server 2012 R2 as end of life, and the Extended Security Updates (ESU) program has ended. As a result, Ivanti will not provide further Patch Content or Endpoint Manager product updates for Windows Server 2012 R2, as it is now outside the supported window. &nbsp;</li><li><strong>Windows 7 &amp; Windows 8.1</strong>: As of January 14, 2020, Microsoft has designated Windows 7 as end of life. Ivanti will continue to provide Patch Content under the ESU program, also critical security vulnerability updates to the Endpoint Manager product for the platform until the ESU program ends on January 10, 2023. As of January 18, 2018, Microsoft has designed Windows 8.1 end of life, extended support for 8.1 ends on January 10, 2023. EPM 2022 SU2 will be the last to support Windows 7 and Windows 8.1 as all future updates will be outside the supported window previously stated.</li><li><strong>Windows 10 &amp; 11 ARM</strong>:
+						<ul><li>ARM architecture supported in x86 emulation mode.</li><li>With the release of 2024 SU3, the EPM Agent will detect and resolve Windows Arm64 OS patches as well as 3rd party Arm applications via the EPM patch solution. <span>Note: this is only supported on Windows 11 Arm64 devices at this time, Windows 10 or any other version of Windows including server edition that haven't released to GA (by June 2025) are not supported.</span></li></ul>
+						</li></ul>
+					</li></ul>
+				</li></ul>
+
+			
+
+			<h3><strong>EPM Windows Embedded Agent</strong></h3>
+
+			<p>Supported functionality includes Inventory, Remote Control and Patch Management.</p>
+
+			
+
+			<p>Due to the wide variety of configurations and OS components possible in embedded operating systems, some features may not function as expected.</p>
+
+			<table><tbody><tr><td colspan="1" rowspan="1"><strong>Operating System</strong></td><td colspan="1" rowspan="1"><strong>2022</strong></td><td colspan="1" rowspan="1"><strong>2024</strong></td></tr><tr><td colspan="1" rowspan="1">Windows Embedded Standard/Enterprise 7</td><td colspan="1" rowspan="1"><strong>Limited Support, see note below</strong></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Embedded POSReady 7</td><td colspan="1" rowspan="1"><strong>Limited Support, see note below</strong></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows Embedded 8.1</td><td colspan="1" rowspan="1"><strong>Limited Support, see note below</strong></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Windows 10 IoT Enterprise</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr></tbody></table>
+
+			<ul><li>
+				<ul><li>
+					<ul><li><strong>Windows Embedded Standard/Enterprise/POSReady 7, Windows Embedded 8.1:</strong> Microsoft has designed Windows Embedded standard 7 and 8.1 end of life, extended support for 7 ends on July 11, 2023 and 8.1 ends on October 10, 2023.&nbsp;</li></ul>
+					</li></ul>
+				</li></ul>
+
+			
+
+			<h3><strong>EPM macOS Agent</strong></h3>
+
+			<p>For further information about installing macOS agents, <a href="https://hub.ivanti.com/s/article/Ivanti-Endpoint-Manager-and-Endpoint-Security-Macintosh-Agent-Frequently-Asked-Questions?ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1">Ivanti Endpoint Manager and Endpoint Security - MacOS Landing Page</a></p>
+
+			
+
+			<p>Ivanti maintains a support schedule for macOS agents that includes compatibility with the current macOS version (with applicable EPM Service Update/Version) and the two previous versions of macOS for all chip sets.&nbsp;</p>
+
+			
+
+			<table><tbody><tr><td colspan="1" rowspan="1"><strong>Operating System</strong></td><td colspan="1" rowspan="1"><strong>2022</strong></td><td colspan="1" rowspan="1"><strong>2024</strong></td></tr><tr><td colspan="1" rowspan="1">macOS 13.X</td><td colspan="1" rowspan="1"><span><strong>Supported in 2022 SU2 +</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">macOS 14.X</td><td colspan="1" rowspan="1"><span><strong>Supported in 2022 SU5 +</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">macOS 15.X</td><td colspan="1" rowspan="1"><span><strong>Supported with Service Update 7</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported with Service Update 1</strong></span></td></tr><tr><td colspan="1" rowspan="1">macOS 26.X</td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported with Service Update 4</strong></span></td></tr></tbody></table>
+
+			
+
+			
+
+			<h3><strong>EPM Linux Agent</strong></h3>
+
+			<p>For further information about installing Linux agents, <a href="https://hub.ivanti.com/s/article/Ivanti-Endpoint-Manager-and-Endpoint-Security-Linux-Unix-Frequently-Asked-Questions?ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1">Ivanti Endpoint Manager and Endpoint Security - Linux/Unix Landing Page</a></p>
+
+			
+
+			<p>Ivanti Antivirus is not currently supported on Linux devices.</p>
+
+			
+
+			<table><tbody><tr><td colspan="1" rowspan="1"><strong>Operating System</strong></td><td colspan="1" rowspan="1"><strong>2022</strong></td><td colspan="1" rowspan="1"><strong>2024</strong></td></tr><tr><td colspan="1" rowspan="1">AIX 7.1 x64 (PPC), <em>EPM Agent does not support Patch Management on this platform&nbsp;</em></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">CentOS 7</td><td colspan="1" rowspan="1"><strong>Limited, see note below*</strong></td><td colspan="1" rowspan="1"><strong>Limited, see note below*</strong></td></tr><tr><td colspan="1" rowspan="1">CentOS 8, <em>EPM Agent does not support Patch Management on this platform&nbsp;</em></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Red Hat Enterprise Linux 7</td><td colspan="1" rowspan="1"><strong>Limited, see note below*</strong></td><td colspan="1" rowspan="1"><strong>Limited, see note below*</strong></td></tr><tr><td colspan="1" rowspan="1">Red Hat Enterprise Linux 8</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Red Hat Enterprise Linux 9</td><td colspan="1" rowspan="1"><span><strong>Supported 2022 SU5</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Red Hat Enterprise Linux 10</td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported with Service Update 4</strong></span></td></tr><tr><td colspan="1" rowspan="1">SuSE Linux Enterprise Server 12</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Not Supported as of Service Update 4</strong></span></td></tr><tr><td colspan="1" rowspan="1">SuSE Linux Enterprise Server 15</td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Ubuntu 20.04 LTS</td><td colspan="1" rowspan="1"><strong>Limited Support, See note below</strong></td><td colspan="1" rowspan="1"><strong>Limited Support, See note below</strong></td></tr><tr><td colspan="1" rowspan="1">Ubuntu 22.04 LTS</td><td colspan="1" rowspan="1"><span><strong>Supported 2022 SU1+</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Ubuntu 24.04</td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported with Service Update 1</strong></span></td></tr><tr><td colspan="1" rowspan="1">Raspberry Pi OS 10, <em>EPM Agent does not support Patch Management on this platform&nbsp;</em></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Raspberry Pi OS 11, <em>EPM Agent does not support Patch Management on this platform&nbsp;</em></td><td colspan="1" rowspan="1"><span><strong>Supported 2022 SU6+</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Oracle Linux 7</td><td colspan="1" rowspan="1"><strong>Limited, see note below*</strong></td><td colspan="1" rowspan="1"><strong>Limited, see note below*</strong></td></tr><tr><td colspan="1" rowspan="1">Oracle Linux 8 *<em>Inventory ONLY</em></td><td colspan="1" rowspan="1"><span><strong>Supported 2022 SU1+</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Oracle Linux 9</td><td colspan="1" rowspan="1"><span><strong>Supported 2022 SU5+</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported</strong></span></td></tr><tr><td colspan="1" rowspan="1">Oracle Linux 10</td><td colspan="1" rowspan="1"><span><strong>Not Supported</strong></span></td><td colspan="1" rowspan="1"><span><strong>Supported with Service Update 4</strong></span></td></tr></tbody></table>
+
+			
+
+			<p>*As Ubuntu 20.04, CentOS 7, Red Hat Enterprise Linux (RHEL) 7, and Oracle Linux 7 have officially reached their End of Life (EOL) status, we will no longer provide extended support for agents installed on these operating systems. These agents will now be considered "functioning as-is," with no further updates.</p>
+			</div></div>

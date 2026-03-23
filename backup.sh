@@ -8,6 +8,8 @@
 #   ./backup.sh immich
 #   ./backup.sh proxy zip
 #   ./backup.sh proxy unzip
+#   ./backup.sh karakeep zip
+#   ./backup.sh karakeep unzip
 # ===================================================================
 
 set -euo pipefail
@@ -132,6 +134,38 @@ do_proxy_unzip() {
 }
 
 # ===================================================================
+# Karakeep backup (ZIP + AES encryption)
+# ===================================================================
+do_karakeep_zip() {
+    KARAKEEP_DIR="$SCRIPT_DIR/misc/karakeep"
+    BACKUP_FILE="$BACKUP_ROOT/karakeep_backup_${DATE}.zip.gpg"
+
+    echo "🔒 Creating encrypted Karakeep backup at $BACKUP_FILE..."
+    cd "$KARAKEEP_DIR" || exit 1
+    sudo zip -r - . | gpg --batch --yes --symmetric \
+        --cipher-algo AES256 --passphrase-file "$GPG_PASS" -o "$BACKUP_FILE"
+    echo "✅ Karakeep backup complete."
+    # Keep only the 2 most recent Karakeep backups
+    ls -t "$BACKUP_ROOT"/karakeep_backup_*.zip.gpg 2>/dev/null | tail -n +3 | xargs -r rm --
+}
+
+do_karakeep_unzip() {
+    KARAKEEP_DIR="$SCRIPT_DIR/misc/karakeep"
+    BACKUP_FILE=$(ls -t "$BACKUP_ROOT"/karakeep_backup_*.zip.gpg 2>/dev/null | head -n 1)
+
+    if [ ! -f "$BACKUP_FILE" ]; then
+        echo "❌ No Karakeep backup found."
+        exit 1
+    fi
+
+    echo "🔓 Decrypting and extracting Karakeep backup..."
+    mkdir -p "$KARAKEEP_DIR"
+    gpg --batch --yes --decrypt --passphrase-file "$GPG_PASS" "$BACKUP_FILE" | \
+        sudo unzip -o -d "$KARAKEEP_DIR" -
+    echo "✅ Karakeep restore complete."
+}
+
+# ===================================================================
 # Argument handling (safe defaults)
 # ===================================================================
 ACTION="${1:-}"   # avoids 'unbound variable' if empty
@@ -158,13 +192,20 @@ case "$ACTION" in
             *) echo "Usage: $0 proxy {zip|unzip}" ;;
         esac
         ;;
+    karakeep)
+        case "$SUBACTION" in
+            zip) do_karakeep_zip ;;
+            unzip) do_karakeep_unzip ;;
+            *) echo "Usage: $0 karakeep {zip|unzip}" ;;
+        esac
+        ;;
     *)
         echo "Usage:"
         echo "  $0 homepage {zip|unzip}"
         echo "  $0 paperless"
         echo "  $0 immich"
         echo "  $0 proxy {zip|unzip}"
+        echo "  $0 karakeep {zip|unzip}"
         exit 1
         ;;
 esac
-
